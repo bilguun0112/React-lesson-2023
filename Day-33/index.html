@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>React-Day-01</title>
+</head>
+
+<body>
+
+    <h1> Day - 33 - React lesson day 1</h1>
+    <div id="root"></div>
+    <div id="root2" style="margin-top: 10px;"></div>
+    <div id="root1" style="margin-top: 10px;"></div>
+   
+
+    <script type="text/babel">
+
+        // React code will go here
+        function Hello() {
+            return <h1> Hello React </h1>
+        }
+
+        ReactDOM.render(<Hello />, document.getElementById("root"));
+
+        function CallImg() {
+            return <img src="https://picsum.photos/536/354" alt="" />
+        }
+
+        ReactDOM.render(<CallImg />, document.getElementById("root1"));
+
+        function Selecter() {
+            return <div>
+                <select name="Just click">Just Click
+                    <option value="Zero"> Zero </option>
+                    <option value="Zoro"> Zoro </option>
+                    <option value="Zuru"> Zuru </option>
+                    <option value="Zere"> Zere </option>
+                </select>
+                <input type="text"/>
+            </div>
+        }
+        ReactDOM.render(<Selecter />, document.getElementById("root2"))
+    </script>
+
+
+
+    <script crossorigin="" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</body>
+
+</html>
