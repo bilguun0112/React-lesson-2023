@@ -26,6 +26,7 @@
 
 .App-link {
   color: #61dafb;
+  text-decoration: none;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +36,54 @@
   to {
     transform: rotate(360deg);
   }
+}
+h4 {
+  float: left;
+}
+/* h2 {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #444;
+} */
+.bottom {
+  display: flex;
+  align-items: center;
+}
+.bottom img{
+  width: 60px;
+  height: 60px;
+}
+.main {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-left: 30%;
+}
+.right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bottom {
+  color: #9d9999;
+}
+.title img{
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.title{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mainImg{
+  width: 200px;
+  height: 150px;
+}
+
+.title img{
+  width: 10px;
+  height: 10px;
 }
