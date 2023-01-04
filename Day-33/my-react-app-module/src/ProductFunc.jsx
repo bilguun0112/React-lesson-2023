@@ -1,19 +1,19 @@
-function ProductFunc (){
+function ProductFunc (props){
     return (
         <div className="main container d-flex gap-5 justify-content-center align-items-center my-2">
-        <img src="img/image-yellow.png" className="mainImg" />
+        <img src={props.productImageUrl} className="mainImg" />
 
         <div className="right w-25">
           <div className="title">
-            <img src="img/arrow.png" alt="logo" />
-            <h5>55</h5>
+            <img src="products/arrow.png" alt="logo" />
+            <h5>{props.votes}</h5>
           </div>
-          <a className="App-link" href="#">
-            Haught or Naught
+          <a className="App-link" href={props.url}>
+            {props.title}
           </a>
-          <p className="text-start">High-minded or absent-minded? You decide.</p>
+          <p className="text-start">{props.description}</p>
           <div className="bottom">
-            Submitted by : <img src="avatars/daniel.jpg" className="App-logo" alt="logo" />
+            Submitted by : <img src={props.submitterAvatarUrl} className="App-logo" alt="logo" />
           </div>
         </div>
       </div>
