@@ -107,32 +107,9 @@ function App() {
         // </div>
         // <div className="container">
         <
-        div > {
-            /* <Product />
-                  <Product1 />
-                  <Product3 />
-                  <Product4 />
-                  <ProductFunc />
-                  <ProductFunc1 />
-                  <ProductFunc3 />
-                  <ProductFunc2 /> */
-        } { productList } < /div>
+        div > { productList } < /div>
     );
 
 }
 
 export default App;
-/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */
