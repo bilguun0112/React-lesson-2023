@@ -1,7 +1,10 @@
 .App {
   text-align: center;
 }
-
+*{
+  margin: 0;
+  padding: 0;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -37,11 +40,6 @@
   to {
     transform: rotate(360deg);
   }
-}
-h4 {
-  /* float: left; */
-  margin: 0;
-  padding: 0;
 }
 /* h2 {
   padding-bottom: 5px;
@@ -86,7 +84,7 @@ h4 {
   height: 13px;
 }
 
-.title h4 {
+.title h5 {
   margin: 0;
   padding: 0;
 }

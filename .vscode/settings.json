@@ -1,0 +1,5 @@
+{
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "javascript.inlayHints.parameterNames.enabled": "none",
+    "html.format.contentUnformatted": ""
+}

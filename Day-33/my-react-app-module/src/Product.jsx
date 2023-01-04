@@ -7,7 +7,7 @@ class Product extends React.Component{
     }
     render(){
         return <div className="main container d-flex gap-5 justify-content-center align-items-center my-2">
-        <img src={yellow} className="mainImg" />
+        <img src="img/image-yellow.png" className="mainImg" />
 
         <div className="right w-25">
           <div className="title">
