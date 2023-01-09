@@ -19,6 +19,7 @@ import products from "./Seed";
 function App() {
     const productList = products.map((product) => {
         return <ProductFunc url = { product.url }
+        id= {product.id}
         title = { product.title }
         votes = { product.votes }
         submitterAvatarUrl = { product.submitterAvatarUrl }
@@ -106,8 +107,8 @@ function App() {
         //   </div>
         // </div>
         // <div className="container">
-        <
-        div > {
+<<<<<<< HEAD
+        <div > {
             /* <Product />
                   <Product1 />
                   <Product3 />
@@ -116,23 +117,13 @@ function App() {
                   <ProductFunc1 />
                   <ProductFunc3 />
                   <ProductFunc2 /> */
-        } { productList } < /div>
+        } { productList } </div>
+=======
+        <
+        div > { productList } < /div>
+>>>>>>> 440822f8e8a710b64eea9bf1736e9908ea08b315
     );
 
 }
 
 export default App;
-/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */
