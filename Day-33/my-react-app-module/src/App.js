@@ -19,6 +19,7 @@ import products from "./Seed";
 function App() {
     const productList = products.map((product) => {
         return <ProductFunc url = { product.url }
+        id= {product.id}
         title = { product.title }
         votes = { product.votes }
         submitterAvatarUrl = { product.submitterAvatarUrl }
@@ -106,8 +107,7 @@ function App() {
         //   </div>
         // </div>
         // <div className="container">
-        <
-        div > {
+        <div > {
             /* <Product />
                   <Product1 />
                   <Product3 />
@@ -116,7 +116,7 @@ function App() {
                   <ProductFunc1 />
                   <ProductFunc3 />
                   <ProductFunc2 /> */
-        } { productList } < /div>
+        } { productList } </div>
     );
 
 }
