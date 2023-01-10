@@ -25,6 +25,7 @@ function App() {
         submitterAvatarUrl = { product.submitterAvatarUrl }
         productImageUrl = { product.productImageUrl }
         description = { product.description }
+        stars = { product.stars }
         />
     })
     return (
@@ -107,7 +108,6 @@ function App() {
         //   </div>
         // </div>
         // <div className="container">
-<<<<<<< HEAD
         <div > {
             /* <Product />
                   <Product1 />
@@ -118,10 +118,7 @@ function App() {
                   <ProductFunc3 />
                   <ProductFunc2 /> */
         } { productList } </div>
-=======
-        <
-        div > { productList } < /div>
->>>>>>> 440822f8e8a710b64eea9bf1736e9908ea08b315
+        
     );
 
 }
