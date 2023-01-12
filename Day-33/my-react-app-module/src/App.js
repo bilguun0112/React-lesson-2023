@@ -15,9 +15,41 @@ import ProductFunc1 from "./ProductFunc1";
 import ProductFunc3 from "./ProductFunc3";
 import ProductFunc2 from "./ProductFunc2";
 import products from "./Seed";
+import { useState } from "react";
 
 function App() {
-    const productList = products.map((product) => {
+
+    const [productsList , setProducstList] = useState(products)
+
+
+
+
+    function handleProductUpVote(productID) {
+        console.log('upvoted', productID);
+        const foundProduct = products.filter(product => {
+            if(product.id == productID){
+                return product
+            }
+        })
+        // console.log(foundProduct[0].votes);
+
+        /// change votes in product array
+        // console.log(products)
+        const newProducts = productsList.map(product => {
+            if(product.id === productID) {
+                return Object.assign({},product,{
+                    votes : product.votes + 1
+                })
+            } else {
+                return product;
+            }
+        })
+        console.log(newProducts)
+        setProducstList(newProducts)
+    }
+
+
+    const productComponents = productsList.map((product) => {
         return <ProductFunc url = { product.url }
         id= {product.id}
         title = { product.title }
@@ -26,6 +58,7 @@ function App() {
         productImageUrl = { product.productImageUrl }
         description = { product.description }
         stars = { product.stars }
+        onVote={handleProductUpVote}
         />
     })
     return (
@@ -117,7 +150,7 @@ function App() {
                   <ProductFunc1 />
                   <ProductFunc3 />
                   <ProductFunc2 /> */
-        } { productList } </div>
+        } { productComponents } </div>
         
     );
 
