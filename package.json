@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "react-router-dom": "^6.6.2",
     "react-simple-star-rating": "^5.1.7"
   }
 }
