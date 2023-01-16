@@ -1,5 +1,5 @@
 import About from './components/about';
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './components/Login';
 import Register from './components/register';
@@ -16,11 +16,11 @@ function App() {
       <h1> Day - 43 React Routes</h1>
       <br />
       <div id='navbar'>
-        <a href="/home">Home</a>
-        <a href="/about">about</a>
-        <a href="/login">login</a>
-        <a href="/register">register</a>
-        <a href="/feedbackform">feedbackform</a>
+        <Link to={"/home"}>Home</Link>
+        <Link to={"/about"}>about</Link>
+        <Link to={"/login"}>login</Link>
+        <Link to={"/register"}>register</Link>
+        <Link to={"/feedbackform"}>feedbackform</Link>
       </div>
 
       <Routes>
