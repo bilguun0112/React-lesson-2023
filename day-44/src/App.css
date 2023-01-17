@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+a {
+  text-decoration: dashed solid;
+margin: 20px;
+  color: pink;
+}
+
+a:visited {
+  color: green;
+}
+
+a:hover {
+  color: hotpink;
+}
+
+a:active {
+  color: rgb(219, 55, 77);
+}
