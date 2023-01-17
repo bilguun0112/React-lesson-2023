@@ -6,6 +6,8 @@ import AboutPage from './components/aboutPage';
 import Index from './components';
 import Movies from './components/Movies';
 import Movie from './components/Movie';
+import GalleryPage from './components/GallaryPage';
+import ToasterPage from './components/ToasterPage';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
   <Route path='/about' element={<AboutPage />} />
   <Route path='/movies' element={<Movies />} />
   <Route path='/movie/:id' element={<Movie />} />
+  <Route path='/gallery' element={<GalleryPage />} />
+  <Route path='toaster' element={<ToasterPage/>} />
 </Routes>
 
 
