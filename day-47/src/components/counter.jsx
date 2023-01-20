@@ -12,6 +12,7 @@ export default function Counter() {
                    }
                  `}
             </style>
+
             <div className="counter p-2 w-25" >
                 <div className="p-3 fs-1">
                     {count}
