@@ -1,0 +1,126 @@
+import { Card, Typography } from '@mui/material'
+import Container from '@mui/material/Container'
+import { Box } from '@mui/system'
+import { useState } from 'react';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useEffect } from 'react';
+import TimerActionButton from './timeraction';
+import { renderElapsedString } from './helper';
+
+
+export default function Timer({ title, project, elapsed, runningSince, runningTime }) {
+    const [seconds, setSeconds] = useState(0);
+
+
+    const [timerIsRunning, setTimerIsRunning] = useState(false)
+    const [intervalId, setIntervalId] = useState(null);
+
+    const [startTime, setStartTime] = useState(null)
+    const [now, setNow] = useState(null)
+
+    const timer = renderElapsedString(elapsed, runningSince);
+    console.log(timer);
+
+    // // hamgiin deed tal
+    useEffect(() => {
+
+        if (timerIsRunning) {
+            setStartTime(Date.now());
+            setNow(Date.now());
+            const tool = setInterval(() => {
+                setNow(Date.now())
+            }, 10);
+            setNow(tool)
+        } else {
+            clearInterval(now);
+        }
+        return () => clearInterval(now);
+    }, [timerIsRunning])
+
+    let secondsPassed = 0;
+    if (startTime != null && now != null) {
+        secondsPassed = (now - startTime) / 1000;
+    }
+
+    // Deed taliin stopWatch
+    useEffect(() => {
+        if (timerIsRunning) {
+            const id = setInterval(() => {
+                setSeconds(seconds => seconds + 1);
+            }, 1000);
+            setIntervalId(id);
+        } else {
+            clearInterval(intervalId);
+        }
+        return () => clearInterval(intervalId);
+    }, [timerIsRunning]);
+
+    //Dood taliih ni
+
+    // useEffect(() => {
+    //     if (timerIsRunning) {
+    //         const id = setInterval(() => {
+    //             setSeconds(seconds => seconds + 1);
+    //         }, 1000);
+    //         setIntervalId(id);
+    //     } else {
+    //         clearInterval(intervalId);
+    //     }
+    //     return () => clearInterval(intervalId);
+    // }, [timerIsRunning]);
+
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const sec = seconds % 60;
+
+    return (
+        <div >
+            <Container maxWidth="sm">
+                <Card sx={{ maxWidth: 345 }}>
+                    <Typography sx={{ fontSize: 28 }} color="text.secondary">
+                        {title}
+                    </Typography>
+                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        {project}
+                    </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+
+                        <h1>
+                            {secondsPassed.toFixed(3)}
+                        </h1>
+                    </Box>
+                    <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+                        <h1>
+                            {hours.toString().padStart(2, '0')} : {minutes.toString().padStart(2, '0')} : {sec.toString().padStart(2, '0')}
+                        </h1>
+                        <h1>
+                            {timer}
+                        </h1>
+                    </Box>
+                    <Box sx={{ display: 'flex', justifyContent: "flex-end", alignItems: "center", marginBottom: 2 }}>
+                        <DeleteIcon />
+                        <EditIcon onClick={() => {
+                            console.log('Hello');
+                        }} />
+
+                    </Box>
+                    <TimerActionButton isTimerRunning={timerIsRunning}
+                        onStartClick={() => {
+                            setTimerIsRunning(true)
+
+                        }}
+                        onStopClick={() => {
+                            setTimerIsRunning(false)
+
+                        }} />
+
+
+                </Card>
+
+
+            </Container>
+
+        </div >
+    )
+}
