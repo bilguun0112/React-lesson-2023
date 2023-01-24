@@ -1,4 +1,4 @@
-import { Card, Typography } from '@mui/material'
+import { Button, Card, Typography } from '@mui/material'
 import Container from '@mui/material/Container'
 import { Box } from '@mui/system'
 import { useState } from 'react';
@@ -12,9 +12,9 @@ import { renderElapsedString } from './helper';
 export default function Timer({ title, project, elapsed, runningSince, runningTime }) {
     const [seconds, setSeconds] = useState(0);
 
+    const [intervalId, setIntervalId] = useState(null);
 
     const [timerIsRunning, setTimerIsRunning] = useState(false)
-    const [intervalId, setIntervalId] = useState(null);
 
     const [startTime, setStartTime] = useState(null)
     const [now, setNow] = useState(null)
@@ -22,21 +22,21 @@ export default function Timer({ title, project, elapsed, runningSince, runningTi
     const timer = renderElapsedString(elapsed, runningSince);
     console.log(timer);
 
-    // // hamgiin deed tal
-    useEffect(() => {
 
-        if (timerIsRunning) {
-            setStartTime(Date.now());
-            setNow(Date.now());
-            const tool = setInterval(() => {
-                setNow(Date.now())
-            }, 10);
-            setNow(tool)
-        } else {
-            clearInterval(now);
-        }
-        return () => clearInterval(now);
-    }, [timerIsRunning])
+    function handleStart() {
+        setStartTime(Date.now());
+        setNow(Date.now());
+
+        setInterval(() => {
+            setNow(Date.now())
+        }, 10);
+    }
+    function handleStop() {
+        clearInterval(intervalId);
+        setIntervalId(null);
+        setStartTime(null);
+        setNow(null);
+    }
 
     let secondsPassed = 0;
     if (startTime != null && now != null) {
@@ -56,19 +56,6 @@ export default function Timer({ title, project, elapsed, runningSince, runningTi
         return () => clearInterval(intervalId);
     }, [timerIsRunning]);
 
-    //Dood taliih ni
-
-    // useEffect(() => {
-    //     if (timerIsRunning) {
-    //         const id = setInterval(() => {
-    //             setSeconds(seconds => seconds + 1);
-    //         }, 1000);
-    //         setIntervalId(id);
-    //     } else {
-    //         clearInterval(intervalId);
-    //     }
-    //     return () => clearInterval(intervalId);
-    // }, [timerIsRunning]);
 
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
@@ -107,20 +94,15 @@ export default function Timer({ title, project, elapsed, runningSince, runningTi
                     </Box>
                     <TimerActionButton isTimerRunning={timerIsRunning}
                         onStartClick={() => {
-                            setTimerIsRunning(true)
-
+                            setTimerIsRunning(true);
+                            handleStart()
                         }}
                         onStopClick={() => {
-                            setTimerIsRunning(false)
-
+                            setTimerIsRunning(false);
+                            handleStop()
                         }} />
-
-
                 </Card>
-
-
             </Container>
-
         </div >
     )
 }
