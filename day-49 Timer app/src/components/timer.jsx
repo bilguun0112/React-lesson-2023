@@ -1,108 +1,75 @@
-import { Button, Card, Typography } from '@mui/material'
-import Container from '@mui/material/Container'
-import { Box } from '@mui/system'
-import { useState } from 'react';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { useEffect } from 'react';
-import TimerActionButton from './timeraction';
-import { renderElapsedString } from './helper';
+import Container from "@mui/material/Container";
+import Card from "@mui/material/Card";
+import { Box, Typography } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import TimerActionButton from "./timeraction";
+import { renderElapsedString } from "./helper";
 
-
-export default function Timer({ title, project, elapsed, runningSince, runningTime }) {
-    const [seconds, setSeconds] = useState(0);
-
-    const [intervalId, setIntervalId] = useState(null);
-
-    const [timerIsRunning, setTimerIsRunning] = useState(false)
-
-    const [startTime, setStartTime] = useState(null)
-    const [now, setNow] = useState(null)
-
+export default function Timer({ id, title, project, elapsed, runningSince, onTrashClick, onStartClick, onStopClick, onEditClick }) {
     const timer = renderElapsedString(elapsed, runningSince);
-    console.log(timer);
-
-
-    function handleStart() {
-        setStartTime(Date.now());
-        setNow(Date.now());
-
-        setInterval(() => {
-            setNow(Date.now())
-        }, 10);
-    }
-    function handleStop() {
-        clearInterval(intervalId);
-        setIntervalId(null);
-        setStartTime(null);
-        setNow(null);
+    function handleEditClick() {
+        onEditClick(id)
     }
 
-    let secondsPassed = 0;
-    if (startTime != null && now != null) {
-        secondsPassed = (now - startTime) / 1000;
+    function handleDelete() {
+        onTrashClick(id);
+    }
+    function handleStartClick() {
+        onStartClick(id)
     }
 
-    // Deed taliin stopWatch
-    useEffect(() => {
-        if (timerIsRunning) {
-            const id = setInterval(() => {
-                setSeconds(seconds => seconds + 1);
-            }, 1000);
-            setIntervalId(id);
-        } else {
-            clearInterval(intervalId);
-        }
-        return () => clearInterval(intervalId);
-    }, [timerIsRunning]);
 
-
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const sec = seconds % 60;
-
+    function handleStopClick() {
+        onStopClick(id)
+    }
     return (
-        <div >
-            <Container maxWidth="sm">
-                <Card sx={{ maxWidth: 345 }}>
-                    <Typography sx={{ fontSize: 28 }} color="text.secondary">
-                        {title}
-                    </Typography>
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                        {project}
-                    </Typography>
-                    <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-
-                        <h1>
-                            {secondsPassed.toFixed(3)}
-                        </h1>
-                    </Box>
-                    <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-                        <h1>
-                            {hours.toString().padStart(2, '0')} : {minutes.toString().padStart(2, '0')} : {sec.toString().padStart(2, '0')}
-                        </h1>
-                        <h1>
-                            {timer}
-                        </h1>
-                    </Box>
-                    <Box sx={{ display: 'flex', justifyContent: "flex-end", alignItems: "center", marginBottom: 2 }}>
-                        <DeleteIcon />
-                        <EditIcon onClick={() => {
-                            console.log('Hello');
-                        }} />
-
-                    </Box>
-                    <TimerActionButton isTimerRunning={timerIsRunning}
-                        onStartClick={() => {
-                            setTimerIsRunning(true);
-                            handleStart()
-                        }}
-                        onStopClick={() => {
-                            setTimerIsRunning(false);
-                            handleStop()
-                        }} />
-                </Card>
-            </Container>
-        </div >
-    )
+        <Container maxWidth="sm">
+            <Card
+                sx={{
+                    maxWidth: 345,
+                    marginBottom: 5,
+                }}
+            >
+                <Typography sx={{ fontSize: 28 }} color="text.secondary">
+                    {title}
+                </Typography>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    {project}
+                </Typography>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                ></Box>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    <h1>{timer}</h1>
+                </Box>
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "flex-end",
+                        alignItems: "center",
+                        marginBottom: 2,
+                    }}
+                >
+                    <DeleteIcon onClick={handleDelete} />
+                    <ModeEditIcon onClick={handleEditClick} />
+                </Box>
+                <TimerActionButton
+                    isTimerRunning={runningSince}
+                    onStartClick={handleStartClick}
+                    onStopClick={handleStopClick}
+                />
+            </Card>
+        </Container>
+    );
 }
