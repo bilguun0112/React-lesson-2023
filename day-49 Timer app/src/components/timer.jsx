@@ -6,8 +6,11 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import TimerActionButton from "./timeraction";
 import { renderElapsedString } from "./helper";
 
-export default function Timer({ id, title, project, elapsed, runningSince, onTrashClick, onStartClick, onStopClick }) {
+export default function Timer({ id, title, project, elapsed, runningSince, onTrashClick, onStartClick, onStopClick, onEditClick }) {
     const timer = renderElapsedString(elapsed, runningSince);
+    function handleEditClick() {
+        onEditClick(id)
+    }
 
     function handleDelete() {
         onTrashClick(id);
@@ -59,7 +62,7 @@ export default function Timer({ id, title, project, elapsed, runningSince, onTra
                     }}
                 >
                     <DeleteIcon onClick={handleDelete} />
-                    <ModeEditIcon />
+                    <ModeEditIcon onClick={handleEditClick} />
                 </Box>
                 <TimerActionButton
                     isTimerRunning={runningSince}
