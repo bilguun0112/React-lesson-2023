@@ -20,6 +20,23 @@ let data = [
     }
 ]
 
+app.put("/data", (request, response) => {
+    const updateDat = data.map(d => {
+        if (d.id === request.body.id) {
+
+            d.name = request.body.name,
+                d.major = request.body.major
+        }
+        return d
+    })
+    data = updateDat
+    console.log('up', updateDat);
+    // //  method 2 
+    // const found = data.filter(d => d.id !== request.body.id)
+    // data = [...found, request.body]
+    response.json(data)
+})
+
 app.get("/", (request, response) => {
     response.send("bi server bn sfsfsdf")
 })
@@ -32,15 +49,15 @@ app.post("/data", (request, response) => {
 
     console.log('body', request.body);
     const length = data.length;
-    const newData = {
+    const requestData = {
         id: length + 1,
         name: request.body.name,
         major: request.body.major
-
     }
-    data.push(newData)
+    data = [...data, requestData]
     response.json(data)
 })
+
 
 app.delete("/data", (request, response) => {
     console.log('delete', request.body);
