@@ -1,52 +1,65 @@
-import React from 'react';
-import { useForm } from '@unform/core';
-import { Container, Form } from './styles';
-import { Button, TextField, Container, FormControl, FormLabel, FormHelperText, FormGroup } from '@mui/material';
-
-export default function NewProductForm() {
-    const { handleSubmit, register, errors } = useForm();
-
-    const onSubmit = (data) => {
-        console.log(data);
-        // TODO: Add submit logic for new product
-    };
-
+import Typography from '@mui/material/Typography'
+import FormControl from '@mui/material/FormControl'
+import { Button, Container, TextField, ButtonGroup } from '@mui/material'
+export default function NewProduct({ handleSubmitFunc }) {
+    async function handleSubmit(e) {
+        e.preventDefault()
+        handleSubmitFunc(e)
+    }
     return (
-        <Container>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <TextField
-                    inputRef={register({ required: true })}
-                    name="name"
-                    label="Name"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                />
-                {errors.name && <p>This field is required</p>}
+        <Container maxWidth="sm">
+            <Typography variant="h5" color="initial">New product</Typography>
+            <form onSubmit={handleSubmit}>
+                <FormControl sx={{ display: "flex", justifyContent: "space-around", gap: "20px" }}>
+                    <TextField
+                        id="name"
+                        label="Name"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="price"
+                        label="Price"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="image"
+                        label="image"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="stock"
+                        label="Stock"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="size"
+                        label="Size"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="color"
+                        label="Color"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="category"
+                        label="Category"
+                        variant="outlined"
+                    />
+                    <TextField
+                        id="description"
+                        label="Description"
+                        variant="outlined"
+                    />
+                    <ButtonGroup variant='contained' aria-label="contained button group">
+                        <Button type='submit' color='success' sx={{ width: "50%" }}>Save</Button>
+                        <Button color='primary' sx={{ width: "50%" }}>Back</Button>
+                    </ButtonGroup>
 
-                <TextField
-                    inputRef={register({ required: true })}
-                    name="price"
-                    label="Price"
-                    type="number"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                />
-                {errors.price && <p>This field is required</p>}
+                </FormControl>
 
-                <TextField
-                    inputRef={register}
-                    name="description"
-                    label="Description"
-                    variant="outlined"
-                    fullWidth
-                    margin="normal"
-                />
-                <Button type="submit" variant="contained" color="primary">
-                    Submit
-                </Button>
-            </Form>
-        </Container>
-    );
+            </form>
+
+        </Container >
+    )
 }
