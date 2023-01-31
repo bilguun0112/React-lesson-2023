@@ -1,7 +1,5 @@
-
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
-import NewProductForm from './components/newProduct';
+import SubmitFunc from './components/submitFunc';
 import Users from './pages/users';
 
 function App() {
@@ -12,7 +10,7 @@ function App() {
       </h1>
       <Routes>
         <Route path='/users' element={<Users />} />
-        <Route path='/test' element={<NewProductForm />} />
+        <Route path='/test' element={<SubmitFunc />} />
       </Routes>
     </div>
   );
