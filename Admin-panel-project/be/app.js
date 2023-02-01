@@ -18,7 +18,7 @@ app.post('/test', (request, response) => {
     const body = request.body
     console.log(body);
     const newUser = {
-        id: Date.now().toString(),
+        id: Date.now().toString().slice(9, 14),
         name: body.name,
         price: body.price,
         image: body.image,
@@ -53,7 +53,19 @@ app.post('/test', (request, response) => {
         })
     })
 })
-
+app.get('/test', (request, response) => {
+    fs.readFile('./public/data/product.json', 'utf-8', (readError, readData) => {
+        if (readError) {
+            status: 'file reader error',
+                data = []
+        }
+        const objectData = JSON.parse(readData)
+        response.json({
+            status: 'success',
+            data: objectData
+        })
+    })
+})
 app.listen(PORT, () => {
     console.log(`Server is running http://localhost:${PORT}`);
 })
