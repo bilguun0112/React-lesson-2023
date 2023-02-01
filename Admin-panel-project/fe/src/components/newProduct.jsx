@@ -8,7 +8,7 @@ export default function NewProduct({ handleSubmitFunc }) {
     }
     return (
         <Container maxWidth="sm">
-            <Typography variant="h5" color="initial">New product</Typography>
+            <Typography variant="h5" color="initial" sx={{ marginBottom: "20px" }}>New product</Typography>
             <form onSubmit={handleSubmit}>
                 <FormControl sx={{ display: "flex", justifyContent: "space-around", gap: "20px" }}>
                     <TextField
