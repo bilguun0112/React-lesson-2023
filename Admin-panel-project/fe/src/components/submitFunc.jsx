@@ -1,6 +1,6 @@
 import NewProduct from "./newProduct";
 
-export default function SubmitFunc() {
+export default function CreateProduct() {
     const URL = 'http://localhost:8080/test'
     async function handleSubmit(event) {
         const postData = {
