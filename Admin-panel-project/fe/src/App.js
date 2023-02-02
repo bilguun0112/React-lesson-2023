@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import ResponsiveDrawer from './components/Drawer';
-import SubmitFunc from './components/submitFunc';
+import CreateProduct from './components/submitFunc';
 import DataTable from './components/testTable';
+import EditProduct from './pages/editProduct';
 import Users from './pages/users';
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
       <Routes>
         <Route path='/' element={<DataTable />} />
         <Route path='/users' element={<Users />} />
-        <Route path='/test' element={<SubmitFunc />} />
+        <Route path='/test' element={<CreateProduct />} />
+        <Route path='/edit-product/:id' element={<EditProduct />} />
       </Routes>
     </div>
   );

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const URL = 'http://localhost:8080/test'
 export default function DataTable() {
@@ -20,8 +21,10 @@ export default function DataTable() {
         { field: 'category', headerName: 'Category', width: 100 },
         {
             field: 'actions', type: 'actions', width: 100, renderCell: (params) => [
-                console.log(params),
-                <Button variant="contained" color="success">EDIT</Button>
+                console.log('params', params),
+                <Link to={`/edit-product/${params.row.id}`} state={users.filter(p => p.id === params.row.id)}>
+                    <Button variant="contained" color="success">EDIT</Button>
+                </Link>
             ],
         },
         {
@@ -57,7 +60,7 @@ export default function DataTable() {
         setUsers(FETCHED_JSON.data)
     }
     return (
-        <div style={{ height: 600, width: '60%', margin: "auto" }}>
+        <div style={{ height: 600, width: '70%', margin: "auto" }}>
             <DataGrid
                 rows={users}
                 columns={columns}
