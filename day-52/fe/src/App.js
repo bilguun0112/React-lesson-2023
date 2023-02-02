@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-
+// import { fetchAllData, deleteUser, createUser, updateUser } from './services/usersServices';
+import { fetchAllData, deleteUser, createUser, updateUser } from './services/axiosUsersServices';
 function App() {
   const newUser = {
     id: "",
@@ -10,72 +11,22 @@ function App() {
   const [users, setUsers] = useState([])
   const [isUpdate, setIsUpdate] = useState(false)
   const [currentUser, setCurrentUSer] = useState(newUser)
-
   const URL = 'http://localhost:8080/users'
+
   async function handleSubmit(e) {
     e.preventDefault()
 
     if (!isUpdate) {
-      const postData = {
-        username: e.target.username.value,
-        age: e.target.age.value
-      }
-      const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(postData)
-      }
-      const FETCHED_DATA = await fetch(URL, options)
-      const FETCHED_JSON = await FETCHED_DATA.json()
-      setUsers(FETCHED_JSON.data)
-
+      updateUser(e, URL, setUsers)
     } else {
-      const putData = {
-        id: currentUser.id,
-        username: currentUser.username,
-        age: currentUser.age
-      }
-
-      const options = {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(putData)
-      }
-      const FETCHED_DATA = await fetch(URL, options)
-      const FETCHED_JSON = await FETCHED_DATA.json()
-      setUsers(FETCHED_JSON.data)
-      setIsUpdate(false)
-      setCurrentUSer(newUser)
+      createUser(currentUser, URL, setUsers, setIsUpdate, setCurrentUSer, newUser)
     }
   }
   useEffect(() => {
-    fetchAllData()
+    fetchAllData(URL, setUsers)
   }, [])
-
-  async function fetchAllData() {
-    const FETCHED_DATA = await fetch(URL)
-    const FETCHED_JSON = await FETCHED_DATA.json()
-    console.log('b', FETCHED_JSON)
-    setUsers(FETCHED_JSON.data)
-  }
-
   async function handleDelete(userId) {
-    const options = {
-      method: 'DELETE',
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify({
-        userId: userId
-      })
-    }
-    const FETCHED_DATA = await fetch(URL, options)
-    const FETCHED_JSON = await FETCHED_DATA.json()
-    setUsers(FETCHED_JSON.data)
+    deleteUser(userId, URL, setUsers)
   }
 
   async function handleEdit(userId) {

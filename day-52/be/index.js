@@ -25,7 +25,7 @@ app.post("/users", (request, response) => {
                 data: []
             })
         }
-        console.log(readData);
+        console.log('readData', readData);
         const dataObject = JSON.parse(readData) // object bolgoson
         console.log(dataObject);
         console.log('=========');
@@ -80,7 +80,6 @@ app.put("/users", (request, response) => {
     })
 
 })
-
 app.get('/users', (request, response) => {
 
     fs.readFile('./data/users.json', 'utf-8', (readError, readData) => {
@@ -136,5 +135,3 @@ app.delete('/users', (request, response) => {
 app.listen(PORT, () => {
     console.log(`Server is running in http://localhost:${PORT}`);
 })
-
-
