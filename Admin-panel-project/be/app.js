@@ -66,6 +66,40 @@ app.get('/test', (request, response) => {
         })
     })
 })
+
+app.delete('/test', (request, response) => {
+    //data avah
+    const body = request.body
+    console.log('Bodyyyy', body);
+    // failaa unshih
+    fs.readFile('./public/data/product.json', 'utf-8', (readError, readData) => {
+        if (readError) {
+            response.json({
+                status: 'File reader error',
+                data: []
+            })
+        }
+        // object irj bgaa bolhoor object unshina
+        const readObject = JSON.parse(readData);
+        // console.log('readObject', readObject);
+        const filteredObjects = readObject.filter(o => o.id !== body.userId.id);
+
+        // butsaaj file ruugaa bichih
+        fs.writeFile('./public/data/product.json', JSON.stringify(filteredObjects), (writeError) => {
+            if (writeError) {
+                response.json({
+                    status: 'write file error',
+                    data: []
+                })
+            }
+            response.json({
+                status: 'success',
+                data: filteredObjects
+            })
+        })
+    })
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running http://localhost:${PORT}`);
 })
