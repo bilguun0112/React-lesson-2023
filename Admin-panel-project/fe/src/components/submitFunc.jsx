@@ -1,7 +1,7 @@
 import NewProduct from "./newProduct";
 
 export default function CreateProduct() {
-    const URL = 'http://localhost:8080/test'
+    const URL = 'http://localhost:8080/product-table'
     async function handleSubmit(event) {
         const postData = {
             name: event.target.name.value,
