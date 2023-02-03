@@ -24,7 +24,7 @@ function ResponsiveDrawer(props) {
                         </ListItemButton>
                     </ListItem>
                 </Link>
-                <Link to='/test'>
+                <Link to='/product-table'>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>

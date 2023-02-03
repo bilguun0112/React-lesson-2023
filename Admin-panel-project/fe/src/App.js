@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<DataTable />} />
         <Route path='/users' element={<Users />} />
-        <Route path='/test' element={<CreateProduct />} />
+        <Route path='/product-table' element={<CreateProduct />} />
         <Route path='/edit-product/:id' element={<EditProduct />} />
       </Routes>
     </div>

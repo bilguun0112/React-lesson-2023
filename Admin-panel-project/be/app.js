@@ -14,7 +14,7 @@ const PORT = 8080
 app.use(cors())
 app.use(express.json())
 
-app.post('/test', (request, response) => {
+app.post('/product-table', (request, response) => {
     const body = request.body
     console.log(body);
     const newUser = {
@@ -53,7 +53,8 @@ app.post('/test', (request, response) => {
         })
     })
 })
-app.get('/test', (request, response) => {
+
+app.get('/product-table', (request, response) => {
     fs.readFile('./public/data/product.json', 'utf-8', (readError, readData) => {
         if (readError) {
             status: 'file reader error',
@@ -67,7 +68,7 @@ app.get('/test', (request, response) => {
     })
 })
 
-app.delete('/test', (request, response) => {
+app.delete('/product-table', (request, response) => {
     //data avah
     const body = request.body
     console.log('Bodyyyy', body);

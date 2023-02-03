@@ -6,7 +6,7 @@ import { useState } from 'react'
 import axios from 'axios'
 
 export default function EditProduct() {
-    const URL = 'http://localhost:8080/test'
+    const URL = 'http://localhost:8080/product-table'
     let data = useLocation()
     console.log('myData', data.state.users[0]);
     const [currentProduct, setCurrentProduct] = useState(data.state.users[0])
@@ -29,7 +29,7 @@ export default function EditProduct() {
         setProduct(FETCHED_DATA.data.data)
     }
 
-
+    console.log('newProduct', product);
     return (
         //This is Edit Product
         <Container maxWidth="sm">

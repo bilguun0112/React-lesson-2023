@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const URL = 'http://localhost:8080/test'
+const URL = 'http://localhost:8080/product-table'
 export default function DataTable() {
     const columns = [
         { field: 'id', headerName: 'ID', width: 80 },
