@@ -13,7 +13,7 @@ const PORT = 8080
 
 app.use(cors())
 app.use(express.json())
-
+// Product
 app.post('/product-table', (request, response) => {
     const body = request.body
     console.log(body);
@@ -54,6 +54,48 @@ app.post('/product-table', (request, response) => {
     })
 })
 
+
+// Users
+
+app.post('/users', (request, response) => {
+    const body = request.body
+    console.log(body);
+    const newUser = {
+        id: Date.now().toString().slice(9, 14),
+        name: body.firstname,
+        price: body.lastname,
+        image: body.email,
+        stock: body.phonenumber,
+        size: body.age,
+        color: body.gender,
+        category: body.password,
+        description: body.address,
+    }
+
+    fs.readFile('./public/data/user.json', 'utf-8', (readError, readData) => {
+        if (readError) {
+            response.json({
+                status: 'file doesnt exist',
+                data: []
+            })
+        }
+        const userDataObject = JSON.parse(readData)
+        userDataObject.push(newUser)
+        fs.writeFile('./public/data/user.json', JSON.stringify(userDataObject), (writeError) => {
+            if (writeError) {
+                response.json({
+                    status: 'Error during file write',
+                    data: []
+                })
+            }
+            response.json({
+                status: 'success',
+                data: userDataObject
+            })
+        })
+    })
+})
+// Product
 app.get('/product-table', (request, response) => {
     fs.readFile('./public/data/product.json', 'utf-8', (readError, readData) => {
         if (readError) {
@@ -64,6 +106,21 @@ app.get('/product-table', (request, response) => {
         response.json({
             status: 'success',
             data: objectData
+        })
+    })
+})
+
+// Users
+app.get('/users', (request, response) => {
+    fs.readFile('./public/data/user.json', 'utf-8', (readError, readData) => {
+        if (readError) {
+            status: 'file reader error',
+                data = []
+        }
+        const objectUserData = JSON.parse(readData)
+        response.json({
+            status: 'success',
+            data: objectUserData
         })
     })
 })
