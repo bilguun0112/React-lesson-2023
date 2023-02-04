@@ -42,14 +42,28 @@ function ResponsiveDrawer(props) {
                         <ListItemText primary="Admin" />
                     </ListItemButton>
                 </ListItem>
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <Inventory />
-                        </ListItemIcon>
-                        <ListItemText primary="User" />
-                    </ListItemButton>
-                </ListItem>
+
+                <Link to='/users'>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <Inventory />
+                            </ListItemIcon>
+                            <ListItemText primary="User" sx={{ color: "rgba(0, 0, 0, 0.87)" }} />
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
+                <Link to='/users-table'>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <Inventory />
+                            </ListItemIcon>
+                            <ListItemText primary="Manage users" sx={{ color: "rgba(0, 0, 0, 0.87)" }} />
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
+
                 <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemIcon>
