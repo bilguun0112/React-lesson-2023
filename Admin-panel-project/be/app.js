@@ -6,6 +6,7 @@ const express = require('express')
 const cors = require('cors')
 const fs = require('fs');
 const { response, request } = require('express');
+const { log } = require('console');
 
 // configuration of modules
 const app = express()
@@ -13,7 +14,7 @@ const PORT = 8080
 
 app.use(cors())
 app.use(express.json())
-// Product
+// Product post
 app.post('/product-table', (request, response) => {
     const body = request.body
     console.log(body);
@@ -50,6 +51,64 @@ app.post('/product-table', (request, response) => {
                 status: 'success',
                 data: dataObject
             })
+        })
+    })
+})
+
+// Product put
+app.put("/product-table", (request, response) => {
+    console.log('req', request.body);
+
+    fs.readFile("./data/product.json", "utf8", (readError, readData) => {
+        if (readError) {
+            response.json({
+                status: "file read error",
+                data: [],
+            });
+        }
+
+        const getData = JSON.parse(readData);
+        console.log('get', getData)
+        const newData = getData.map((w) => {
+            if (w.id === request.body.id) {
+                (w.name = request.body.name),
+                    (w.price = request.body.price),
+                    (w.image = request.body.image),
+                    (w.stock = request.body.stock),
+                    (w.size = request.body.size);
+                (w.color = request.body.color);
+                (w.category = request.body.category);
+                (w.description = request.body.description);
+            }
+            return w;
+        });
+
+        fs.writeFile("./data/product.json", JSON.stringify(newData), (writeError) => {
+            if (writeError) {
+                response.json({
+                    status: "file write error",
+                    data: [],
+                })
+            }
+            response.json({
+                status: "success",
+                data: newData
+            })
+        })
+    })
+})
+
+// Product get
+app.get('/product-table', (request, response) => {
+    fs.readFile('./public/data/product.json', 'utf-8', (readError, readData) => {
+        if (readError) {
+            status: 'file reader error',
+                data = []
+        }
+        const objectData = JSON.parse(readData)
+        response.json({
+            status: 'success',
+            data: objectData
         })
     })
 })
@@ -95,20 +154,7 @@ app.post('/users', (request, response) => {
         })
     })
 })
-// Product
-app.get('/product-table', (request, response) => {
-    fs.readFile('./public/data/product.json', 'utf-8', (readError, readData) => {
-        if (readError) {
-            status: 'file reader error',
-                data = []
-        }
-        const objectData = JSON.parse(readData)
-        response.json({
-            status: 'success',
-            data: objectData
-        })
-    })
-})
+
 
 // Users
 app.get('/users', (request, response) => {
