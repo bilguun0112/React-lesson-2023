@@ -1,13 +1,15 @@
 import Typography from '@mui/material/Typography'
 import FormControl from '@mui/material/FormControl'
 import { Button, Container, TextField, ButtonGroup } from '@mui/material'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 
 export default function EditProduct() {
+    const navigate = useNavigate()
     const URL = 'http://localhost:8080/product-table'
     let data = useLocation()
+    console.log('state', data.state);
     let stateData = data.state[0]
     const [currentProduct, setCurrentProduct] = useState(stateData)
     const [product, setProduct] = useState([])
@@ -32,6 +34,7 @@ export default function EditProduct() {
             }
         })
         setProduct(FETCHED_DATA.data.data)
+        navigate('/', { replace: true, state: { bookName: "zzzzz" } })
     }
 
     console.log('newProduct', product);
@@ -60,8 +63,8 @@ export default function EditProduct() {
                         <TextField id="description" label="Description" variant="outlined" defaultValue={currentProduct.description}
                             onChange={(e) => setCurrentProduct({ ...currentProduct, description: e.target.value })} />
                         <ButtonGroup variant='contained' aria-label="contained button group">
-                            <Button type='submit' color='success' onClick={handleEdit} sx={{ width: "50%" }}>Save</Button>
-                            <Button color='primary' onClick={() => { console.log('back clicked') }} sx={{ width: "50%" }}>Back</Button>
+                            <Button color='success' onClick={handleEdit} sx={{ width: "50%" }}>Save</Button>
+                            <Button color='primary' onClick={() => { navigate('/', { replace: true, state: { bookName: "zzzzz" } }) }} sx={{ width: "50%" }}>Back</Button>
                         </ButtonGroup>
 
                     </FormControl>
