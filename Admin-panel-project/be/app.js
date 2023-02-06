@@ -57,9 +57,9 @@ app.post('/product-table', (request, response) => {
 
 // Product put
 app.put("/product-table", (request, response) => {
-    console.log('req', request.body);
+    // console.log('req', request.body);
 
-    fs.readFile("./data/product.json", "utf8", (readError, readData) => {
+    fs.readFile('./public/data/product.json', "utf8", (readError, readData) => {
         if (readError) {
             response.json({
                 status: "file read error",
@@ -71,11 +71,11 @@ app.put("/product-table", (request, response) => {
         console.log('get', getData)
         const newData = getData.map((w) => {
             if (w.id === request.body.id) {
-                (w.name = request.body.name),
-                    (w.price = request.body.price),
-                    (w.image = request.body.image),
-                    (w.stock = request.body.stock),
-                    (w.size = request.body.size);
+                (w.name = request.body.name);
+                (w.price = request.body.price);
+                (w.image = request.body.image);
+                (w.stock = request.body.stock);
+                (w.size = request.body.size);
                 (w.color = request.body.color);
                 (w.category = request.body.category);
                 (w.description = request.body.description);
@@ -83,7 +83,7 @@ app.put("/product-table", (request, response) => {
             return w;
         });
 
-        fs.writeFile("./data/product.json", JSON.stringify(newData), (writeError) => {
+        fs.writeFile('./public/data/product.json', JSON.stringify(newData), (writeError) => {
             if (writeError) {
                 response.json({
                     status: "file write error",
