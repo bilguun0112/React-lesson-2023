@@ -1,6 +1,7 @@
 import Typography from '@mui/material/Typography'
 import FormControl from '@mui/material/FormControl'
 import { Button, Container, TextField, ButtonGroup } from '@mui/material'
+import GenderRadio from './genderRadio'
 export default function NewUsers({ handleUserSubmitFunc }) {
     async function handleSubmit(e) {
         e.preventDefault()
@@ -38,6 +39,7 @@ export default function NewUsers({ handleUserSubmitFunc }) {
                         variant="outlined"
                         type='number'
                     />
+                    <GenderRadio />
                     <TextField
                         id="gender"
                         label="Gender"

@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import NewProduct from "./newProduct";
 
 export default function CreateProduct() {
     const URL = 'http://localhost:8080/product-table'
+    const navigate = useNavigate()
     async function handleSubmit(event) {
         const postData = {
             name: event.target.name.value,
@@ -24,6 +26,7 @@ export default function CreateProduct() {
         const FETCHED_DATA = await fetch(URL, options)
         const FETCHED_JSON = await FETCHED_DATA.json()
         console.log(FETCHED_JSON.data);
+        navigate('/product-table', { replace: true, state: { bookName: "product table" } })
     }
     return (
         <NewProduct handleSubmitFunc={handleSubmit} />

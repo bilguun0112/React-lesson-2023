@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const URL = 'http://localhost:8080/product-table'
 export default function DataTable() {
+    const navigate = useNavigate()
     const columns = [
         { field: 'id', headerName: 'ID', width: 80 },
         {
@@ -61,6 +62,9 @@ export default function DataTable() {
     }
     return (
         <div style={{ height: 600, width: '70%', margin: "auto" }}>
+            <Button color='primary' variant='contained' sx={{ marginBottom: "30px" }} onClick={() => {
+                navigate('/create-product', { replace: true, state: { bookName: "create product" } })
+            }}>Create product</Button>
             <DataGrid
                 rows={users}
                 columns={columns}
