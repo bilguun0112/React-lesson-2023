@@ -34,7 +34,7 @@ export default function EditProduct() {
             }
         })
         setProduct(FETCHED_DATA.data.data)
-        navigate('/', { replace: true, state: { bookName: "zzzzz" } })
+        navigate('/product-table', { replace: true, state: { bookName: "zzzzz" } })
     }
 
     console.log('newProduct', product);
@@ -64,7 +64,7 @@ export default function EditProduct() {
                             onChange={(e) => setCurrentProduct({ ...currentProduct, description: e.target.value })} />
                         <ButtonGroup variant='contained' aria-label="contained button group">
                             <Button color='success' onClick={handleEdit} sx={{ width: "50%" }}>Save</Button>
-                            <Button color='primary' onClick={() => { navigate('/', { replace: true, state: { bookName: "zzzzz" } }) }} sx={{ width: "50%" }}>Back</Button>
+                            <Button color='primary' onClick={() => { navigate('/product-table', { replace: true, state: { bookName: "zzzzz" } }) }} sx={{ width: "50%" }}>Back</Button>
                         </ButtonGroup>
 
                     </FormControl>

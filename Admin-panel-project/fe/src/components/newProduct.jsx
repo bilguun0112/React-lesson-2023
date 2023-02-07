@@ -1,7 +1,9 @@
 import Typography from '@mui/material/Typography'
 import FormControl from '@mui/material/FormControl'
 import { Button, Container, TextField, ButtonGroup } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 export default function NewProduct({ handleSubmitFunc }) {
+    const navigate = useNavigate()
     async function handleSubmit(e) {
         e.preventDefault()
         handleSubmitFunc(e)
@@ -53,7 +55,9 @@ export default function NewProduct({ handleSubmitFunc }) {
                     />
                     <ButtonGroup variant='contained' aria-label="contained button group">
                         <Button type='submit' color='success' sx={{ width: "50%" }}>Save</Button>
-                        <Button color='primary' sx={{ width: "50%" }}>Back</Button>
+                        <Button color='primary' sx={{ width: "50%" }} onClick={() => {
+                            navigate('/product-table', { replace: true, state: { bookName: "product table" } })
+                        }}>Back</Button>
                     </ButtonGroup>
 
                 </FormControl>
