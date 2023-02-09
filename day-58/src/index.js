@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ContextProvider } from './context/newContext';
 import StopWatch from './components/StopWatch';
+import InputFocus from './components/inputFocus';
+import VideoPlayer from './components/VideoPlayer';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,7 +16,9 @@ root.render(
       {/* <App /> */}
 
     </ContextProvider>
-    <StopWatch />
+    {/* <StopWatch /> */}
+    {/* <InputFocus /> */}
+    <VideoPlayer />
   </React.StrictMode>
 );
 
