@@ -3,24 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ContextProvider } from './context/newContext';
-import StopWatch from './components/StopWatch';
-import InputFocus from './components/inputFocus';
-import VideoPlayer from './components/VideoPlayer';
-import Exam from './components/exam';
-
+import { ThemeContextProvider } from './context/useTheme';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ContextProvider>
-      {/* <App /> */}
-
-    </ContextProvider>
-    {/* <StopWatch /> */}
-    {/* <InputFocus /> */}
-    {/* <VideoPlayer /> */}
-    <Exam />
+    <ThemeContextProvider>
+      <App />
+    </ThemeContextProvider>
   </React.StrictMode>
 );
 

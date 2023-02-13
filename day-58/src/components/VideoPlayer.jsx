@@ -15,7 +15,7 @@ export default function VideoPlayer() {
 
     return (
         <>
-            <h1>Video player</h1>
+            <h1>Day 58 </h1>
             <Button
                 variant="contained"
                 color="primary"
@@ -28,7 +28,6 @@ export default function VideoPlayer() {
                 <source
                     src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
                     type="video/mp4" />
-
             </video>
 
         </>
