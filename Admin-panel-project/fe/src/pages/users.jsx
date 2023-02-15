@@ -5,7 +5,7 @@ export default function Users() {
     async function handleSubmit(event) {
         const postData = {
             name: event.target.firstname.value,
-            price: event.target.lastprice.value,
+            price: event.target.lastname.value,
             image: event.target.email.value,
             stock: event.target.phonenumber.value,
             size: event.target.age.value,

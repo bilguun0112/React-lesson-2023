@@ -14,7 +14,6 @@ export default function UsersTable() {
         { field: 'category', headerName: 'Category', width: 100 },
         {
             field: 'actions', type: 'actions', width: 100, renderCell: (params) => [
-                console.log('params', params),
                 <Link to={`/edit-product/${params.row.id}`} state={users.filter(p => p.id === params.row.id)}>
                     <Button variant="contained" color="success">EDIT</Button>
                 </Link>

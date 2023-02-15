@@ -126,7 +126,6 @@ app.post('/users', (request, response) => {
         image: body.email,
         stock: body.phonenumber,
         size: body.age,
-        color: body.gender,
         category: body.password,
         description: body.address,
     }
@@ -170,7 +169,7 @@ app.get('/users', (request, response) => {
         })
     })
 })
-
+// ! product delete 
 app.delete('/product-table', (request, response) => {
     //data avah
     const body = request.body
