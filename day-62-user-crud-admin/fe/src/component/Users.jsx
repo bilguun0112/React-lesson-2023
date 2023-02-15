@@ -31,7 +31,7 @@ const columns = [
         editable: true,
     },
     {
-        field: 'roles',
+        field: 'role',
         headerName: 'Role',
         width: 100,
         editable: true,
@@ -46,7 +46,7 @@ export default function Users() {
         const FETCHED_DATA = await fetch(URL)
         const FETCHED_JSON = await FETCHED_DATA.json()
         console.log(FETCHED_JSON)
-        setUsers(FETCHED_JSON.data)
+        setUsers('data', FETCHED_JSON.data)
     }
     const [users, setUsers] = useState([])
 
