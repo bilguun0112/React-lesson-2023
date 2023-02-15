@@ -116,18 +116,19 @@ app.get('/product-table', (request, response) => {
 
 // Users
 
-app.post('/users', (request, response) => {
+app.post('/users-table', (request, response) => {
     const body = request.body
     console.log(body);
     const newUser = {
         id: Date.now().toString().slice(9, 14),
-        name: body.firstname,
-        price: body.lastname,
-        image: body.email,
-        stock: body.phonenumber,
-        size: body.age,
-        category: body.password,
-        description: body.address,
+        firstname: body.firstname,
+        lastname: body.lastname,
+        email: body.email,
+        phonenumber: body.phonenumber,
+        age: body.age,
+        gender: body.gender,
+        password: body.password,
+        address: body.address,
     }
 
     fs.readFile('./public/data/user.json', 'utf-8', (readError, readData) => {
@@ -154,9 +155,51 @@ app.post('/users', (request, response) => {
     })
 })
 
+// Users put
+app.put("/users-table", (request, response) => {
+    // console.log('req', request.body);
+    fs.readFile('./public/data/user.json', "utf8", (readError, readData) => {
+        if (readError) {
+            response.json({
+                status: "file read error",
+                data: [],
+            });
+        }
+
+        const getData = JSON.parse(readData);
+        console.log('get', getData)
+        const newData = getData.map((w) => {
+            if (w.id === request.body.id) {
+                (w.name = request.body.name);
+                (w.price = request.body.price);
+                (w.image = request.body.image);
+                (w.stock = request.body.stock);
+                (w.size = request.body.size);
+                (w.color = request.body.color);
+                (w.category = request.body.category);
+                (w.description = request.body.description);
+            }
+            return w;
+        });
+
+        fs.writeFile('./public/data/user.json', JSON.stringify(newData), (writeError) => {
+            if (writeError) {
+                response.json({
+                    status: "file write error",
+                    data: [],
+                })
+            }
+            response.json({
+                status: "success",
+                data: newData
+            })
+        })
+    })
+})
+
 
 // Users
-app.get('/users', (request, response) => {
+app.get('/users-table', (request, response) => {
     fs.readFile('./public/data/user.json', 'utf-8', (readError, readData) => {
         if (readError) {
             status: 'file reader error',
@@ -169,11 +212,43 @@ app.get('/users', (request, response) => {
         })
     })
 })
+
+// ! users delete 
+app.delete('/users-table', (request, response) => {
+    //data avah
+    const body = request.body
+    console.log('Bodyyyy', body);
+    // failaa unshih
+    fs.readFile('./public/data/user.json', 'utf-8', (readError, readData) => {
+        if (readError) {
+            response.json({
+                status: 'File reader error',
+                data: []
+            })
+        }
+        // ! object irj bgaa bolhoor object unshina
+        const readObject = JSON.parse(readData);
+        const filteredObjects = readObject.filter(o => o.id !== body.userId.id);
+
+        // butsaaj file ruugaa bichih
+        fs.writeFile('./public/data/user.json', JSON.stringify(filteredObjects), (writeError) => {
+            if (writeError) {
+                response.json({
+                    status: 'write file error',
+                    data: []
+                })
+            }
+            response.json({
+                status: 'success',
+                data: filteredObjects
+            })
+        })
+    })
+})
 // ! product delete 
 app.delete('/product-table', (request, response) => {
     //data avah
     const body = request.body
-    console.log('Bodyyyy', body);
     // failaa unshih
     fs.readFile('./public/data/product.json', 'utf-8', (readError, readData) => {
         if (readError) {

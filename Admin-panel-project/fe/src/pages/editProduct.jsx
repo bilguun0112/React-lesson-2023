@@ -14,12 +14,9 @@ export default function EditProduct() {
     const [currentProduct, setCurrentProduct] = useState(stateData)
     const [product, setProduct] = useState([])
     console.log('myData', currentProduct);
-
     async function handleEdit() {
         console.log('Clicked')
-
         const FETCHED_DATA = await axios({
-
             url: URL, method: 'PUT',
             data: {
                 id: currentProduct.id,
@@ -66,9 +63,7 @@ export default function EditProduct() {
                             <Button color='success' onClick={handleEdit} sx={{ width: "50%" }}>Save</Button>
                             <Button color='primary' onClick={() => { navigate('/product-table', { replace: true, state: { bookName: "zzzzz" } }) }} sx={{ width: "50%" }}>Back</Button>
                         </ButtonGroup>
-
                     </FormControl>
-
                 </form>
             }
         </Container >

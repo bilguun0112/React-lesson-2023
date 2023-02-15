@@ -5,6 +5,7 @@ import DataTable from './components/productTable';
 import EditProduct from './pages/editProduct';
 import Users from './pages/users';
 import UsersTable from './pages/usersTable';
+import EditUsers from './pages/editUser';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/users' element={<Users />} />
         <Route path='/product-table' element={<DataTable />} />
         <Route path='/edit-product/:id' element={<EditProduct />} />
+        <Route path='/users/:id' element={<EditUsers />} />
         <Route path='/users-table' element={<UsersTable />} />
       </Routes>
     </div>
