@@ -9,7 +9,6 @@ export default function GenderRadio() {
     return (
         <FormControl>
             <FormLabel id="demo-row-radio-buttons-group-label">Gender
-
                 <RadioGroup
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
