@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const URL = 'http://localhost:8080/users'
+const URL = 'http://localhost:8080/users-table'
 export default function UsersTable() {
+    const navigate = useNavigate()
     const columns = [
         { field: 'id', headerName: 'ID', width: 80 },
         { field: 'firstname', headerName: 'First Name', width: 100 },
         { field: 'lastname', headerName: 'Last Name', width: 150 },
-        { field: 'size', headerName: 'Size', width: 100 },
-        { field: 'color', headerName: 'Color', width: 100 },
-        { field: 'category', headerName: 'Category', width: 100 },
+        { field: 'email', headerName: 'E-mail', width: 100 },
+        { field: 'gender', headerName: 'Gender', width: 75 },
         {
             field: 'actions', type: 'actions', width: 100, renderCell: (params) => [
-                <Link to={`/edit-product/${params.row.id}`} state={users.filter(p => p.id === params.row.id)}>
+                <Link to={`/users/${params.row.id}`} state={users.filter(p => p.id === params.row.id)}>
                     <Button variant="contained" color="success">EDIT</Button>
                 </Link>
             ],
@@ -53,6 +53,9 @@ export default function UsersTable() {
     }
     return (
         <div style={{ height: 600, width: '70%', margin: "auto" }}>
+            <Button color='primary' variant='contained' sx={{ marginBottom: "30px" }} onClick={() => {
+                navigate('/users-product', { replace: true, state: { bookName: "create product" } })
+            }}>Create user</Button>
             <DataGrid
                 rows={users}
                 columns={columns}
