@@ -36,3 +36,44 @@
     transform: rotate(360deg);
   }
 }
+
+/* Secondary a */
+a.secondary {
+  background-color: white;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+}
+
+a.secondary:hover {
+  background-color: #f5f5f5;
+}
+
+a.secondary:focus {
+  outline: none;
+}
+a {
+  background-color: #1976d2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #0d47a1;
+}
+
+a:focus {
+  outline: none;
+}
+
+a:disabled {
+  background-color: #bdbdbd;
+  color: #757575;
+  cursor: not-allowed;
+}
+
