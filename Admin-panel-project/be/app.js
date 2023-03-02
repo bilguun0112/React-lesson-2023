@@ -167,17 +167,15 @@ app.put("/users-table", (request, response) => {
         }
 
         const getData = JSON.parse(readData);
-        console.log('get', getData)
         const newData = getData.map((w) => {
             if (w.id === request.body.id) {
-                (w.name = request.body.name);
-                (w.price = request.body.price);
-                (w.image = request.body.image);
-                (w.stock = request.body.stock);
-                (w.size = request.body.size);
-                (w.color = request.body.color);
-                (w.category = request.body.category);
-                (w.description = request.body.description);
+                (w.firstname = request.body.firstname);
+                (w.lastname = request.body.lastname);
+                (w.email = request.body.email);
+                (w.phonenumber = request.body.phonenumber);
+                (w.age = request.body.age);
+                (w.gender = request.body.gender);
+                (w.address = request.body.address);
             }
             return w;
         });

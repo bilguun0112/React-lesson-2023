@@ -12,28 +12,24 @@ export default function EditUsers() {
     let stateData = data.state[0]
     const [currentUsers, setCurrentUsers] = useState(stateData)
     const [users, setUsers] = useState([])
-    console.log('myData', currentUsers);
     async function handleEdit() {
-        console.log('Clicked')
         const FETCHED_DATA = await axios({
             url: URL, method: 'PUT',
             data: {
                 id: currentUsers.id,
-                name: currentUsers.name,
-                price: currentUsers.price,
-                image: currentUsers.image,
-                stock: currentUsers.stock,
-                size: currentUsers.size,
-                color: currentUsers.color,
-                category: currentUsers.category,
-                description: currentUsers.description,
+                firstname: currentUsers.firstname,
+                lastname: currentUsers.lastname,
+                email: currentUsers.email,
+                phonenumber: currentUsers.phonenumber,
+                age: currentUsers.age,
+                gender: currentUsers.gender,
+                address: currentUsers.address,
             }
         })
         setUsers(FETCHED_DATA.data.data)
         navigate('/users-table')
     }
 
-    console.log('newUsers', users);
     return (
         // * This is Edit Users
         <Container maxWidth="sm">
@@ -42,22 +38,20 @@ export default function EditUsers() {
                 currentUsers &&
                 <form >
                     <FormControl sx={{ display: "flex", justifyContent: "space-around", gap: "20px" }}>
-                        <TextField id="name" label="Name" variant="outlined" defaultValue={currentUsers.name}
-                            onChange={(e) => setCurrentUsers({ ...currentUsers, name: e.target.value })} />
-                        <TextField id="price" label="Price" variant="outlined" defaultValue={currentUsers.price}
-                            onChange={(e) => setCurrentUsers({ ...currentUsers, price: e.target.value })} />
-                        <TextField id="image" label="image" variant="outlined" defaultValue={currentUsers.image}
-                            onChange={(e) => setCurrentUsers({ ...currentUsers, image: e.target.value })} />
-                        <TextField id="stock" label="Stock" variant="outlined" defaultValue={currentUsers.stock}
-                            onChange={(e) => setCurrentUsers({ ...currentUsers, stock: e.target.value })} />
-                        <TextField id="size" label="Size" variant="outlined" defaultValue={currentUsers.size}
-                            onChange={(e) => setCurrentUsers({ ...currentUsers, size: e.target.value })} />
-                        <TextField id="color" label="Color" variant="outlined" defaultValue={currentUsers.color}
-                            onChange={(e) => setCurrentUsers({ ...currentUsers, color: e.target.value })} />
-                        <TextField id="category" label="Category" variant="outlined" defaultValue={currentUsers.category}
-                            onChange={(e) => setCurrentUsers({ ...currentUsers, category: e.target.value })} />
-                        <TextField id="description" label="Description" variant="outlined" defaultValue={currentUsers.description}
-                            onChange={(e) => setCurrentUsers({ ...currentUsers, description: e.target.value })} />
+                        <TextField id="firstname" label="First name" variant="outlined" defaultValue={currentUsers.firstname}
+                            onChange={(e) => setCurrentUsers({ ...currentUsers, firstname: e.target.value })} />
+                        <TextField id="lastname" label="Last name" variant="outlined" defaultValue={currentUsers.lastname}
+                            onChange={(e) => setCurrentUsers({ ...currentUsers, lastname: e.target.value })} />
+                        <TextField id="email" label="Email address" variant="outlined" defaultValue={currentUsers.email}
+                            onChange={(e) => setCurrentUsers({ ...currentUsers, email: e.target.value })} />
+                        <TextField id="phonenumber" label="Phone number" variant="outlined" defaultValue={currentUsers.phonenumber}
+                            onChange={(e) => setCurrentUsers({ ...currentUsers, phonenumber: e.target.value })} />
+                        <TextField id="age" label="Age" variant="outlined" defaultValue={currentUsers.age}
+                            onChange={(e) => setCurrentUsers({ ...currentUsers, age: e.target.value })} />
+                        <TextField id="gender" label="Gender" variant="outlined" defaultValue={currentUsers.gender}
+                            onChange={(e) => setCurrentUsers({ ...currentUsers, gender: e.target.value })} />
+                        <TextField id="address" label="Address" variant="outlined" defaultValue={currentUsers.address}
+                            onChange={(e) => setCurrentUsers({ ...currentUsers, address: e.target.value })} />
                         <ButtonGroup variant='contained' aria-label="contained button group">
                             <Button color='success' onClick={handleEdit} sx={{ width: "50%" }}>Save</Button>
                             <Button color='primary' sx={{ width: "50%" }} onClick={() => { navigate('/users-table') }}>Back</Button>
