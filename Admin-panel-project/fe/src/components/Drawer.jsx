@@ -34,16 +34,16 @@ function ResponsiveDrawer(props) {
                         </ListItemButton>
                     </ListItem>
                 </Link>
-                <ListItem disablePadding>
+                {/* <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemIcon>
                             <Inventory />
                         </ListItemIcon>
                         <ListItemText primary="Admin" />
                     </ListItemButton>
-                </ListItem>
+                </ListItem> */}
 
-                <Link to='/users'>
+                {/* <Link to='/users'>
                     <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
@@ -52,7 +52,7 @@ function ResponsiveDrawer(props) {
                             <ListItemText primary="User" sx={{ color: "rgba(0, 0, 0, 0.87)" }} />
                         </ListItemButton>
                     </ListItem>
-                </Link>
+                </Link> */}
                 <Link to='/users-table'>
                     <ListItem disablePadding>
                         <ListItemButton>
@@ -63,15 +63,27 @@ function ResponsiveDrawer(props) {
                         </ListItemButton>
                     </ListItem>
                 </Link>
+                <Link to='/users-role-add'>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <Inventory />
+                            </ListItemIcon>
+                            <ListItemText primary="User role" sx={{ color: "rgba(0, 0, 0, 0.87)" }} />
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
+                <Link to='/users-role-table'>
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <Inventory />
+                            </ListItemIcon>
+                            <ListItemText primary="User role table" sx={{ color: "rgba(0, 0, 0, 0.87)" }} />
+                        </ListItemButton>
+                    </ListItem>
+                </Link>
 
-                <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <Inventory />
-                        </ListItemIcon>
-                        <ListItemText primary="Document" />
-                    </ListItemButton>
-                </ListItem>
             </List>
             <Divider />
         </div>

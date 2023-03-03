@@ -2,10 +2,15 @@ import Typography from '@mui/material/Typography'
 import FormControl from '@mui/material/FormControl'
 import { Button, Container, TextField, ButtonGroup } from '@mui/material'
 import GenderRadio from './genderRadio'
+import { useNavigate } from 'react-router-dom'
 export default function NewUsers({ handleUserSubmitFunc }) {
+    const navigate = useNavigate();
     async function handleSubmit(e) {
         e.preventDefault()
         handleUserSubmitFunc(e)
+    }
+    function handleBackClick() {
+        navigate('/')
     }
     return (
         <Container maxWidth="sm">
@@ -58,7 +63,7 @@ export default function NewUsers({ handleUserSubmitFunc }) {
                     />
                     <ButtonGroup variant='contained' aria-label="contained button group">
                         <Button type='submit' color='success' sx={{ width: "50%" }}>Save</Button>
-                        <Button color='primary' sx={{ width: "50%" }}>Back</Button>
+                        <Button color='primary' onClick={handleBackClick} sx={{ width: "50%" }}>Back</Button>
                     </ButtonGroup>
 
                 </FormControl>

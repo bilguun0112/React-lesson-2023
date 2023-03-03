@@ -2,18 +2,23 @@ console.log('it is my app.js');
 
 // import necessary module
 
-const express = require('express')
-const cors = require('cors')
-const fs = require('fs');
-const { response, request } = require('express');
-const { log } = require('console');
+// const express = require('express')
+// const cors = require('cors')
+// const fs = require('fs');
+// const { response, request } = require('express');
+// const { log } = require('console');
 
+import express from 'express';
+import cors from 'cors'
+import fs from 'fs'
+import user_role_router from './routes/user-role.js';
 // configuration of modules
 const app = express()
 const PORT = 8080
 
 app.use(cors())
 app.use(express.json())
+app.use(user_role_router)
 // Product post
 app.post('/product-table', (request, response) => {
     const body = request.body
@@ -167,17 +172,15 @@ app.put("/users-table", (request, response) => {
         }
 
         const getData = JSON.parse(readData);
-        console.log('get', getData)
         const newData = getData.map((w) => {
             if (w.id === request.body.id) {
-                (w.name = request.body.name);
-                (w.price = request.body.price);
-                (w.image = request.body.image);
-                (w.stock = request.body.stock);
-                (w.size = request.body.size);
-                (w.color = request.body.color);
-                (w.category = request.body.category);
-                (w.description = request.body.description);
+                (w.firstname = request.body.firstname);
+                (w.lastname = request.body.lastname);
+                (w.email = request.body.email);
+                (w.phonenumber = request.body.phonenumber);
+                (w.age = request.body.age);
+                (w.gender = request.body.gender);
+                (w.address = request.body.address);
             }
             return w;
         });
