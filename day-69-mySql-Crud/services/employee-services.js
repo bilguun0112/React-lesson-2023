@@ -4,8 +4,6 @@ import { pool } from "../config/mySql-config.js";
 export async function getEmployees() {
     const [rows] = await pool.query(`select * from employees limit 10`);
     console.log(rows);
-
-
     return rows;
 
 }

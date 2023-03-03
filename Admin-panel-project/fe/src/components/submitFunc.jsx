@@ -26,7 +26,7 @@ export default function CreateProduct() {
         const FETCHED_DATA = await fetch(URL, options)
         const FETCHED_JSON = await FETCHED_DATA.json()
         console.log(FETCHED_JSON.data);
-        navigate('/product-table', { replace: true, state: { bookName: "product table" } })
+        navigate('/product-table')
     }
     return (
         <NewProduct handleSubmitFunc={handleSubmit} />
