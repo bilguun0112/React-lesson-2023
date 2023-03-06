@@ -9,6 +9,7 @@ import EditUsers from './pages/editUser';
 import HomePage from './pages/homePage';
 import UserRole from './components/uesrRole';
 import UsersRoleTable from './pages/usersRoleTable';
+import EditUserRole from './pages/EditUserRole';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
         <Route path='/users-table' element={<UsersTable />} />
         <Route path='/users-role-table' element={<UsersRoleTable />} />
         <Route path='/users-role-add' element={<UserRole />} />
+        <Route path='/users-role-edit' element={<EditUserRole />} />
+
       </Routes>
     </div>
   );

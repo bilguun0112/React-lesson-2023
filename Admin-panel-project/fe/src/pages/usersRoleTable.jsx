@@ -10,8 +10,38 @@ export default function UsersRoleTable() {
     const columns = [
         { field: 'id', headerName: 'ID', width: 80 },
         { field: 'name', headerName: 'User Name', width: 100 },
+        // {
+        //     field: 'actions', type: 'actions', width: 100, renderCell: (params) => [
+        //         <Link Link to={`/users-role-edit/${params.row.id}`} state={users.filter(p => p.id === params.row.id)} >
+        //             <Button variant="contained" color="success" onClick={() => {
+        //                 console.log(params)
+        //             }}>EDIT</Button>
+        //         </Link >
+        //     ],
+        // },
+        // {
+        //     field: 'actions1', type: 'actions', width: 100, renderCell: (params) => [
+        //         <Button variant="contained" color="error" onClick={() => handleDelete(params.row)}>DELETE</Button>
+        //     ],
+        // },
     ];
     const [users, setUsers] = React.useState([])
+
+    async function handleDelete(userId) {
+        console.log('delete clicked');
+        // const options = {
+        //     method: 'DELETE',
+        //     headers: {
+        //         "Content-type": "application/json"
+        //     },
+        //     body: JSON.stringify({
+        //         userId: userId
+        //     })
+        // }
+        // const FETCHED_DATA = await fetch(URL, options)
+        // const FETCHED_JSON = await FETCHED_DATA.json()
+        // setUsers(FETCHED_JSON.data)
+    }
 
     async function fetchAllData() {
         const FETCHED_DATA = await fetch(URL)
