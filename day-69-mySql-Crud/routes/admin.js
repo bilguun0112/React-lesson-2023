@@ -1,9 +1,9 @@
 import express, { request, response } from 'express'
 
-const emp_router = express.Router();
+const admin = express.Router();
 import { getEmployees, hireEmployee, getMaxNo, fireEmployee, updateEmployee } from '../services/employee-services.js';
 
-emp_router.get('/employees', async (req, res) => {
+admin.get('/employees', async (req, res) => {
 
     const result = await getEmployees();
     console.log(result)
@@ -11,7 +11,7 @@ emp_router.get('/employees', async (req, res) => {
 })
 
 
-emp_router.post('/employee', async (request, response) => {
+admin.post('/employee', async (request, response) => {
 
     const { birthDate, firstName, lastName, gender, hireDate } = request.body;
     const { max } = await getMaxNo()
@@ -27,7 +27,7 @@ emp_router.post('/employee', async (request, response) => {
     response.status(200).send({})
 })
 
-emp_router.delete('/employee', async (request, response) => {
+admin.delete('/employee', async (request, response) => {
     const body = request.body;
     console.log(body);
 
@@ -36,7 +36,7 @@ emp_router.delete('/employee', async (request, response) => {
 })
 
 
-emp_router.put('/employee', async (req, res) => {
+admin.put('/employee', async (req, res) => {
     const body = req.body;
     console.log(body);
 
@@ -45,4 +45,4 @@ emp_router.put('/employee', async (req, res) => {
 
     res.status(200).send({})
 })
-export { emp_router }
+export { admin }

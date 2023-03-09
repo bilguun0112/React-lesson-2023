@@ -14,7 +14,7 @@ import fs from 'fs'
 import user_role_router from './routes/user-role.js';
 // configuration of modules
 const app = express()
-const PORT = 8080
+const PORT = 8081
 
 app.use(cors())
 app.use(express.json())
