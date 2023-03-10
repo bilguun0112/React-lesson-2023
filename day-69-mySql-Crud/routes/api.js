@@ -47,11 +47,13 @@
 // })
 // export { emp_router }
 
-import express, { request, response } from 'express'
+import express from 'express'
 
 const api_router = express.Router();
 import { getEmployees, hireEmployee, getMaxNo, fireEmployee, updateEmployee } from '../services/employee-services.js';
 import { getChildrenMenus, getParentMenus } from '../services/menus-service.js';
+import { search, getAllProducts } from '../services/product-services.js';
+
 
 api_router.get('/popular', async (req, res) => {
 
@@ -77,18 +79,6 @@ api_router.post('/popular', async (request, response) => {
     response.status(200).send({})
 })
 
-
-// api_router.get('/menus', async (request, response) => {
-//     const parentMenus = await getParentMenus();
-//     const result = parentMenus.map(async (parent) => {
-//         const children = await getChildrenMenus(parent.id);
-//         console.log(children)
-//         parent.children = children
-//         return parent
-//     })
-//     response.status(200).send(parentMenus)
-// })
-
 api_router.get('/menus', async (request, response) => {
     const parentMenus = await getParentMenus();
 
@@ -101,6 +91,18 @@ api_router.get('/menus', async (request, response) => {
     )
 
     response.status(200).send(parentMenus)
+})
+
+api_router.get('/products', async (request, response) => {
+    const result = await getAllProducts()
+    response.status(200).send(result)
+})
+
+
+api_router.get('/search', async (request, response) => {
+    const keyword = request.query.keyword;
+    const result = await search(keyword);
+    response.status(200).send(result)
 })
 
 
