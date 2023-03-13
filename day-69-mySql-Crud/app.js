@@ -1,12 +1,16 @@
 console.log("Day - 69");
 
 import express from "express";
-import { emp_router } from "./routes/employees.js";
+import { admin } from "./routes/admin.js";
+import { api_router } from "./routes/api.js";
+import { getPopularCategories } from "./services/category-services.js";
+import cors from 'cors'
 
 
 
 const app = express()
-const PORT = 8080;
+const PORT = 8081;
+
 
 
 app.get('/', (req, res) => {
@@ -14,7 +18,10 @@ app.get('/', (req, res) => {
 })
 
 app.use(express.json())
-app.use(emp_router)
+app.use(cors())
+app.use("/admin", admin)
+app.use("/api", api_router)
+
 
 app.listen(PORT, () => {
     console.log(`Express app is running http://localhost:${PORT}`)

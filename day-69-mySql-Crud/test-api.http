@@ -1,38 +1,53 @@
-GET http://localhost:8080/employees HTTP/1.1;
+# GET http://localhost:8080/employees HTTP/1.1;
+
+# Content-Type: application/json
+
+# ###
+GET http://localhost:8081/api/popular HTTP/1.1;
+
+Content-Type: application/json
+
+###
+GET http://localhost:8081/api/search?keyword=camera HTTP/1.1;
+
+Content-Type: application/json
+
+###
+GET http://localhost:8081/api/products HTTP/1.1;
 
 Content-Type: application/json
 
 ###
 
-POST http://localhost:8080/employee HTTP/1.1
-Content-Type: application/json
+# POST http://localhost:8080/employee HTTP/1.1
+# Content-Type: application/json
 
-{
-    "birthDate" : "1990-01-01",
-    "firstName" : "John",
-    "lastName" : "Mckay",
-    "gender" : "M",
-    "hireDate" : "2010-01-01"
-}
+# {
+#     "birthDate" : "1990-01-01",
+#     "firstName" : "John",
+#     "lastName" : "Mckay",
+#     "gender" : "M",
+#     "hireDate" : "2010-01-01"
+# }
 
-###
+# ###
 
-DELETE  http://localhost:8080/employee HTTP/1.1
-Content-Type: application/json
+# DELETE  http://localhost:8080/employee HTTP/1.1
+# Content-Type: application/json
 
-{
-    "empNo" : 500001
-}
+# {
+#     "empNo" : 500001
+# }
 
-###
+# ###
 
-PUT http://localhost:8080/employee HTTP/1.1
-Content-Type: application/json
+# PUT http://localhost:8080/employee HTTP/1.1
+# Content-Type: application/json
 
-{
-    "empNo" : 500000,
-    "lastName" : "zozo",
-    "gender": "M"
-}
+# {
+#     "empNo" : 500000,
+#     "lastName" : "zozo",
+#     "gender": "M"
+# }
 
-###
+# ###
