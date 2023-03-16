@@ -9,10 +9,33 @@ Router.get('/users', async (request, response) => {
     console.log(result);
     response.json({ data: result });
 })
+// ! ID ashiglaj hailt hiiv
+Router.get('/user', async (request, response) => {
+    const userId = request.query.id;
+    console.log(request.query);
+    const user = await User.findOne({ _id: userId })
+    response.json({ data: user });
+})
+
+// ! Emaileer haih
+// Router.get('/userByMail', async (request, response) => {
+//     const userMail = request.query.email;
+//     console.log(request.query.email);
+//     const user = await User.findOne({ email: userMail })
+//     response.json({ data: user });
+// })
+
+// ! Emaileer haih todorhoi baganii medeelel avah
+Router.get('/userByMail', async (request, response) => {
+    const userMail = request.query.email;
+    console.log(request.query.email);
+    const user = await User.find({ email: userMail }, '_id name email').exec()
+
+    response.json({ data: user });
+})
 
 Router.post('/user', async (request, response) => {
     const body = request.body;
-
     const newUser = new User(body)
 
     const result = await newUser.save()
@@ -21,6 +44,22 @@ Router.post('/user', async (request, response) => {
     response.json({ data: result })
 })
 
+Router.get('/userGetEmail', async (req, res) => {
+    const userEmail = request.query.email;
+
+    const foundUser = await User.findByUserEmail(userEmail);
+    response.json({
+        data: foundUser,
+    })
+})
+
+Router.put('/updateUser', async (request, response) => {
+    const result = await User.updateOne(
+        { email: "reddragon@gmail.com" },
+        { $set: { lastLogin: Date.now() } }
+    );
+    response.json({ date: result })
+})
 
 Router.delete('/users', async (request, response) => {
     const id = request.body._id;
