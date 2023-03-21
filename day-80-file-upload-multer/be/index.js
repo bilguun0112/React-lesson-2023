@@ -3,6 +3,7 @@ console.log('Day 80 file upload multer')
 const express = require('express')
 const cors = require('cors')
 const multer = require('multer')
+const fs = require('fs')
 const { request, response } = require('express')
 
 
@@ -31,11 +32,36 @@ app.get('/', (req, res) => {
     )
 })
 
-app.post('/fileUpload', upload.single("image"), (request, response, next) => {
-    console.log(request.file)
-    response.json({
-        data: []
+app.get('/files', async (req, res) => {
+    const testFolder = './uploads'
+    const imgs = [];
+
+    fs.readdirSync(testFolder).forEach((file) => {
+        console.log(file);
+        const imgURL = `http://localhost:8080/uploads/${file}`;
+        imgs.push(imgURL)
     })
+
+    response.status(200).json({
+        data: imgs,
+    })
+})
+
+app.post('/fileUpload', upload.single("image"), (request, response, next) => {
+
+    // console.log(request.file)
+    const imgs = [];
+
+    fs.readdirSync('./uploads').forEach(file => {
+        console.log(file)
+        const fileUrl = `http://localhost:8080/uploads/${file}`
+        imgs.push(fileUrl)
+    })
+
+    response.json({
+        data: imgs
+    })
+
 })
 
 app.listen(PORT, () => {
