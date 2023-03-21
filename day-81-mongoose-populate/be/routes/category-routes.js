@@ -1,26 +1,23 @@
-const express = require('express')
-const Category = require('../models/category')
-const categoryRouter = express.Router()
+const express = require("express");
+const categoryRouter = express.Router();
+const Category = require("../models/Category");
 
+categoryRouter.get("/list", async (request, response) => {
+    const result = await Category.find({});
 
-categoryRouter.get('/list', async (req, res) => {
-    const result = await Category.find({})
-
-    res.status(200).json({
+    response.status(200).json({
         data: result,
-    })
-})
+    });
+});
 
-categoryRouter.post('/create', async (req, res) => {
-    const body = req.body
-    console.log(body)
+categoryRouter.post("/create", async (request, response) => {
+    const body = request.body;
 
-    const result = await Category.create(body)
+    const result = await Category.create(body);
 
-    res.status(200).json({
-        data: result
-    })
-})
-
+    response.status(200).json({
+        data: result,
+    });
+});
 
 module.exports = categoryRouter;
