@@ -3,15 +3,16 @@ console.log("Day - 82")
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
+require('dotenv').config();
 const adminRouter = require('./routes/admin-api')
 const apiRouter = require('./routes/api')
 
-const PORT = 8080
 const app = express()
+const PORT = process.env.PORT
+const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING
 
 app.use(express.json())
 app.use(cors())
-const MONGO_CONNECTION_STRING = 'mongodb+srv://blackbilguun:TEozn8OuZBEU4XQF@bilguunee.rn8hbjv.mongodb.net/day-82'
 
 
 app.use('/admin', adminRouter)
