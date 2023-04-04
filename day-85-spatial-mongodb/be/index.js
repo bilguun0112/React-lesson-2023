@@ -1,11 +1,12 @@
-console.log("Day - 82")
+console.log("Day - 85")
 
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv').config();
-const adminRouter = require('./routes/admin-api')
-const apiRouter = require('./routes/api')
+
+const restaurantApi = require('./routes/restaurantRoutes')
+const neighborhoodsApi = require('./routes/neighborhoodsRoutes')
 
 const app = express()
 const PORT = process.env.PORT
@@ -14,9 +15,15 @@ const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING
 app.use(express.json())
 app.use(cors())
 
+app.use('/restaurant', restaurantApi)
+app.use('/restaurant', neighborhoodsApi)
 
-app.use('/admin', adminRouter)
-app.use('/api', apiRouter)
+app.get('/', (req, res) => {
+    res.json({
+        data: []
+    })
+})
+
 
 app.listen(PORT, () => {
     mongoose
