@@ -62,15 +62,10 @@ export default function UpcomingMovies(): JSX.Element {
   }, []);
   console.log(newmovies);
 
-  const images = newmovies.map((m) => {
-    return (
-      <div>
-        <swiper-container>
-          <swiper-slide>{m.poster}</swiper-slide>
-        </swiper-container>
-      </div>
-    );
-  });
-
-  return <div> {images}</div>;
+  return (
+    <div>
+      {" "}
+      <h1>ZZZ</h1>
+    </div>
+  );
 }
