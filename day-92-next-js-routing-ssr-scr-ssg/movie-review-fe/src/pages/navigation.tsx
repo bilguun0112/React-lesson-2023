@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import "swiper/css/navigation";
 import React, { useEffect, useState } from "react";
 export default function Navigation(): JSX.Element {
   const [navigate, setNavigate] = useState(false);

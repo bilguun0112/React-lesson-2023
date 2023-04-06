@@ -17,7 +17,7 @@ export default function NavigationBar(): JSX.Element {
         />
       </Link>
       <div className={styles.searchbar}>
-        <FontAwesomeIcon icon="search" className={styles.searchIcon} />
+        {/* <FontAwesomeIcon icon="search" className={styles.searchIcon} /> */}
         <input
           className={styles.search}
           type="text"
