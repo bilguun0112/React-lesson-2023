@@ -1,0 +1,10 @@
+.main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* gap: 1px; */
+}

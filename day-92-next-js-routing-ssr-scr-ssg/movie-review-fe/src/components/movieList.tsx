@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import test from "./test.json";
+
 import { faDivide } from "@fortawesome/free-solid-svg-icons";
 import { SwiperContainer, SwiperSlide, register } from "swiper/element/bundle";
 register();
@@ -50,29 +50,22 @@ interface IMovies {
 
 export default function UpcomingMovies(): JSX.Element {
   const [newmovies, setNewmovies] = React.useState<IMovies>([]);
-  //   const URL = "http://localhost:8080/movies/list";
-
-  //   async function getMovies(): Promise<void> {
-  //     const response = await fetch(URL);
-  //     const data = await response.json();
-  //     setNewmovies(data);
-  //   }
+  const URL = "http://localhost:8080/movies/list";
+  async function getMovies(): Promise<void> {
+    const response = await fetch(URL);
+    const data = await response.json();
+    setNewmovies(data);
+  }
 
   useEffect(() => {
-    // getMovies();
-    setNewmovies(test);
+    getMovies();
   }, []);
   console.log(newmovies);
-  const slider = newmovies.map((movie, index) => {
-    <SwiperContainer spaceBetween={50} slidesPerView={3} key={index}>
-      <SwiperSlide>{movie.poster}</SwiperSlide>
-    </SwiperContainer>;
-  });
 
   return (
     <div>
+      {" "}
       <h1>ZZZ</h1>
-      {slider}
     </div>
   );
 }
