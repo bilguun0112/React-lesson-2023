@@ -1,0 +1,131 @@
+[
+    {
+        "_id": {
+            "$oid": "573a1390f29313caabcd4323"
+        },
+        "plot": "A young boy, opressed by his mother, goes on an outing in the country with a social welfare group where he dares to dream of a land where the cares of his ordinary life fade.",
+        "genres": [
+            "Short",
+            "Drama",
+            "Fantasy"
+        ],
+        "runtime": 10,
+        "rated": "UNRATED",
+        "cast": [
+            "Martin Fuller",
+            "Mrs. William Bechtel",
+            "Walter Edwin",
+            "Ethel Jewett"
+        ],
+        "num_mflix_comments": 1,
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTMzMDcxMjgyNl5BMl5BanBnXkFtZTcwOTgxNjg4Mg@@._V1_SY1000_SX677_AL_.jpg",
+        "title": "The Land Beyond the Sunset",
+        "fullplot": "Thanks to the Fresh Air Fund, a slum child escapes his drunken mother for a day's outing in the country. Upon arriving, he and the other children are told a story about a mythical land of no pain. Rather then return to the slum at day's end, the lad seeks to journey to that beautiful land beyond the sunset.",
+        "languages": [
+            "English"
+        ],
+        "released": {
+            "$date": {
+                "$numberLong": "-1804377600000"
+            }
+        },
+        "directors": [
+            "Harold M. Shaw",
+            "Bilguun Bayanmunkh"
+        ],
+        "writers": [
+            "Dorothy G. Shore"
+        ],
+        "awards": {
+            "wins": 1,
+            "nominations": 0,
+            "text": "1 win."
+        },
+        "lastupdated": "2015-08-29 00:27:45.437000000",
+        "year": 1912,
+        "imdb": {
+            "rating": 7.1,
+            "votes": 448,
+            "id": 488
+        },
+        "countries": [
+            "USA",
+            "Mongolia"
+        ],
+        "type": "movie",
+        "tomatoes": {
+            "viewer": {
+                "rating": 3.7,
+                "numReviews": 53,
+                "meter": 67
+            },
+            "lastUpdated": {
+                "$date": "2015-04-27T19:06:35.000Z"
+            }
+        }
+    },
+    {
+        "_id": {
+            "$oid": "573a1390f29313caabcd4803"
+        },
+        "plot": "Cartoon figures announce, via comic strip balloons, that they will move - and move they do, in a wildly exaggerated style.",
+        "genres": [
+            "Animation",
+            "Short",
+            "Comedy"
+        ],
+        "runtime": 10,
+        "cast": [
+            "Winsor McCay"
+        ],
+        "num_mflix_comments": 0,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYzg2NjNhNTctMjUxMi00ZWU4LWI3ZjYtNTI0NTQxNThjZTk2XkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_SY1000_SX677_AL_.jpg",
+        "title": "Winsor McCay, the Famous Cartoonist of the N.Y. Herald and His Moving Comics",
+        "fullplot": "Cartoonist Winsor McCay agrees to create a large set of drawings that will be photographed and made into a motion picture. The job requires plenty of drawing supplies, and the cartoonist must also overcome some mishaps caused by an assistant. Finally, the work is done, and everyone can see the resulting animated picture.",
+        "languages": [
+            "English"
+        ],
+        "released": {
+            "$date": {
+                "$numberLong": "-1853539200000"
+            }
+        },
+        "directors": [
+            "Winsor McCay",
+            "J. Stuart Blackton",
+            "Bilguun Bayanmunkh"
+        ],
+        "writers": [
+            "Winsor McCay (comic strip \"Little Nemo in Slumberland\")",
+            "Winsor McCay (screenplay)"
+        ],
+        "awards": {
+            "wins": 1,
+            "nominations": 0,
+            "text": "1 win."
+        },
+        "lastupdated": "2015-08-29 01:09:03.030000000",
+        "year": 1911,
+        "imdb": {
+            "rating": 7.3,
+            "votes": 1034,
+            "id": 1737
+        },
+        "countries": [
+            "USA",
+            "Mongolia"
+        ],
+        "type": "Animation",
+        "tomatoes": {
+            "viewer": {
+                "rating": 3.4,
+                "numReviews": 89,
+                "meter": 47
+            },
+            "lastUpdated": {
+                "$date": "2015-08-20T18:51:24.000Z"
+            }
+        },
+        "rating": 6.3
+    }
+]

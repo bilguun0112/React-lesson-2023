@@ -1,7 +1,8 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import styles from "@/styles/movie.module.css";
+import React, { useEffect } from "react";
 
+import { faDivide } from "@fortawesome/free-solid-svg-icons";
+import { SwiperContainer, SwiperSlide, register } from "swiper/element/bundle";
+register();
 interface IAwards {
   wins: number;
   nominations: number;
@@ -47,36 +48,24 @@ interface IMovies {
   tomatoes: ITomatoes;
 }
 
-export default function MovieList() {
+export default function UpcomingMovies(): JSX.Element {
+  const [newmovies, setNewmovies] = React.useState<IMovies>([]);
   const URL = "http://localhost:8080/movies/list";
-
-  const [list, setList] = useState<IMovies[]>([]);
-
-  async function getMovies() {
+  async function getMovies(): Promise<void> {
     const response = await fetch(URL);
     const data = await response.json();
-    setList(data);
-    console.log("list", list);
+    setNewmovies(data);
   }
 
   useEffect(() => {
     getMovies();
   }, []);
+  console.log(newmovies);
 
-  const movieList = list.map((movie, idx) => {
-    return (
-      <div key={idx}>
-        <img
-          src={movie?.poster}
-          alt={movie.title}
-          height={231.727}
-          width={161.664}
-        />
-        <h4>{movie.title.slice(0, 18)}</h4>
-        <h5>{movie.lastupdated.slice(0, 10)}</h5>
-      </div>
-    );
-  });
-
-  return <div className={styles.main}>{movieList}</div>;
+  return (
+    <div>
+      {" "}
+      <h1>ZZZ</h1>
+    </div>
+  );
 }
