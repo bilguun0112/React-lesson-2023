@@ -16,11 +16,12 @@ exports.getMoviesById = exports.getMovies = void 0;
 const movies_model_1 = __importDefault(require("../models/movies.model"));
 const getMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const page = Number(req.query.page) || 0;
-    const moviesPerPage = Number(req.query.moviesPerPage) || 120;
+    const moviesPerPage = Number(req.query.moviesPerPage) || 20;
     try {
         const movies = yield movies_model_1.default.find()
             .limit(moviesPerPage)
-            .skip(moviesPerPage * page);
+            .skip(moviesPerPage * page)
+            .sort({ year: -1 });
         res.status(200).json(movies);
     }
     catch (error) {

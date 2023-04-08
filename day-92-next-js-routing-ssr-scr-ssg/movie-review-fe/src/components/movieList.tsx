@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
-
-import { faDivide } from "@fortawesome/free-solid-svg-icons";
-import { SwiperContainer, SwiperSlide, register } from "swiper/element/bundle";
-register();
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 interface IAwards {
   wins: number;
   nominations: number;
@@ -27,6 +24,7 @@ interface IViewer {
 }
 
 interface IMovies {
+  _id: any;
   plot: string;
   genres: [string];
   runtime: number;
@@ -49,23 +47,47 @@ interface IMovies {
 }
 
 export default function UpcomingMovies(): JSX.Element {
-  const [newmovies, setNewmovies] = React.useState<IMovies>([]);
+  const [newmovies, setNewmovies] = useState<IMovies[]>([]);
   const URL = "http://localhost:8080/movies/list";
   async function getMovies(): Promise<void> {
     const response = await fetch(URL);
     const data = await response.json();
     setNewmovies(data);
+    console.log("mov", newmovies);
   }
 
   useEffect(() => {
     getMovies();
   }, []);
-  console.log(newmovies);
 
   return (
-    <div>
-      {" "}
-      <h1>ZZZ</h1>
+    <div className="my-5">
+      <div className="flex flex-wrap max-w-screen-lg justify-between">
+        {newmovies.map((movie, idx) => {
+          return (
+            <div key={idx}>
+              <div className="px-4 hover:animate-pulse">
+                <img
+                  src={movie.poster}
+                  className="h-96 rounded shadow-2xl w-72"
+                />
+                <div className=" w-64 p-1 my-1 text-white font-mono">
+                  <div className="flex">
+                    <img
+                      src="https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/certified_fresh-notext.56a89734a59.svg"
+                      className="w-8 mr-2"
+                    />{" "}
+                    <a>{movie.imdb.rating}</a>
+                  </div>
+                  <Link href={{ pathname: "/movies/" + movie._id }} passHref>
+                    <h3 className="">{movie.title}</h3>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -2,13 +2,12 @@
 .navbar {
     max-width: 1100px;
     padding: 10px;
-    margin: 0 auto;
     background-color: #e50914;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 103px;
-    width: 80vw;
+    width: 100vw;
     font-family: Arial, Helvetica, sans-serif;
   }
   
