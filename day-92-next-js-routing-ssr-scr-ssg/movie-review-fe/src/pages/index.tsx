@@ -20,9 +20,11 @@ export default function Home(props: any): JSX.Element {
   const side = typeof window ? "client" : "server";
   const today = new Date().toLocaleDateString();
   return (
-    <div className={styles.main}>
-      <NavigationBar />
-      <UpcomingMovies />
+    <div className="bg-background-primary">
+      <div className="flex flex-col justify-between items-center min-h-screen bg-background-secondary">
+        <NavigationBar />
+        <UpcomingMovies />
+      </div>
       {/* Welcome! */}
       {/* <div>You're currently on the {side}-side</div>
       <Link href="/about">About Page</Link>

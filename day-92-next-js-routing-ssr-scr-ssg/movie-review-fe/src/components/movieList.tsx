@@ -50,8 +50,9 @@ export default function UpcomingMovies(): JSX.Element {
   const [newmovies, setNewmovies] = useState<IMovies[]>([]);
 
   const [num, setNum] = useState(1);
+  const [current, setCurrent] = useState(1);
 
-  const URL = "http://localhost:8080/movies/list";
+  const URL = `http://localhost:8080/movies/list?page=${current}`;
   async function getMovies(): Promise<void> {
     const response = await fetch(URL);
     const data = await response.json();
@@ -61,21 +62,22 @@ export default function UpcomingMovies(): JSX.Element {
 
   useEffect(() => {
     getMovies();
-  }, []);
-
+  }, [current]);
+  const noImage =
+    "https://www.shutterstock.com/image-photo/businessman-holding-paper-say-no-260nw-105617738.jpg";
   return (
     <div className="my-5">
       <div className="flex flex-wrap max-w-screen-lg justify-between">
         {newmovies.map((movie, idx) => {
           return (
             <div key={idx}>
-              <div className="px-4 ">
+              <div className="group px-4">
                 <img
-                  src={movie.poster}
-                  className="h-96 rounded shadow-2xl w-72 hover:animate-pulse"
+                  src={movie.poster ? movie.poster : noImage}
+                  className="h-96 rounded shadow-2xl w-72 group-hover:fill-gray-600 group-hover:opacity-50 hover:fill"
                 />
-                <div className=" w-64 p-1 my-1 text-white font-mono">
-                  <div className="flex">
+                <div className=" w-64 p-1 my-1 text-black font-mono group-hover:text-blue-400">
+                  <div className="flex items-center">
                     <img
                       src="https://www.rottentomatoes.com/assets/pizza-pie/images/icons/tomatometer/certified_fresh-notext.56a89734a59.svg"
                       className="w-8 mr-2"
@@ -89,7 +91,12 @@ export default function UpcomingMovies(): JSX.Element {
           );
         })}
       </div>
-      <Pagination num={num} setNum={setNum} />
+      <Pagination
+        num={num}
+        setNum={setNum}
+        current={current}
+        setCurrent={setCurrent}
+      />
     </div>
   );
 }

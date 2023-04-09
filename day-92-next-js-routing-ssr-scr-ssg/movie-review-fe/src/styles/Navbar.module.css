@@ -8,6 +8,7 @@
     align-items: center;
     height: 103px;
     width: 100vw;
+    gap: 10px;
     font-family: Arial, Helvetica, sans-serif;
   }
   
@@ -38,6 +39,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    gap: 15px;
 }
 .topItem {
     align-self: flex-end;
@@ -48,18 +50,20 @@
     padding: 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .table li {
-    padding: 10px;
+    padding: 5px;
     color: white;
 }
 
 .table li:hover{
     color: black;
-    padding: 10px;
+    padding: 5px;
     background-color: #ffffff;
     border-radius: 10px;
+
 }
 .searchbar {
     position: relative;
