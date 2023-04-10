@@ -38,19 +38,31 @@ export default function NavigationBar(): JSX.Element {
           name="search-input"
         />
       </div>
-      <div className={styles.table}>
-        <div className={styles.topItem}>
+      <div className="flex flex-col justify-between w-full gap-4">
+        <div className="self-end">
           <Link href="#">What's the Tomatometer?</Link>
           <Link href="#">Critics</Link>
           <Link href="#">LOGIN/SIGNUP</Link>
         </div>
-        <ul>
-          <li>MOVIES</li>
-          <li>TV SHOWS</li>
-          <li>MOVIE TRIVIA</li>
-          <li>NEWS</li>
-          <li>SHOWTIMES</li>
-        </ul>
+        <div>
+          <ul className="m-0 p-0 flex justify-between items-center list-none text-white">
+            <li className="hover:text-black hover:p-1 hover:bg-white hover:rounded-xl">
+              MOVIES
+            </li>
+            <li className="hover:text-black hover:p-1 hover:bg-white hover:rounded-xl">
+              TV SHOWS
+            </li>
+            <li className="hover:text-black hover:p-1 hover:bg-white hover:rounded-xl">
+              MOVIE TRIVIA
+            </li>
+            <li className="hover:text-black hover:p-1 hover:bg-white hover:rounded-xl">
+              NEWS
+            </li>
+            <li className="hover:text-black hover:p-1 hover:bg-white hover:rounded-xl">
+              SHOWTIMES
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
