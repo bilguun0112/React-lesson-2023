@@ -34,29 +34,6 @@
 .search::placeholder{
     color: white;
 }
-.table {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    gap: 15px;
-}
-.topItem {
-    align-self: flex-end;
-}
-.table ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.table li {
-    padding: 5px;
-    color: white;
-}
 
 .table li:hover{
     color: black;

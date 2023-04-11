@@ -67,11 +67,11 @@ export default function UpcomingMovies(): JSX.Element {
     "https://www.shutterstock.com/image-photo/businessman-holding-paper-say-no-260nw-105617738.jpg";
   return (
     <div className="my-5">
-      <div className="flex flex-wrap max-w-screen-lg justify-between">
+      <div className="flex flex-wrap max-w-screen-lg justify-evenly md:justify-center sm:justify-center">
         {newmovies.map((movie, idx) => {
           return (
             <div key={idx}>
-              <div className="group px-4">
+              <div className="group px-4 md:w-full m:">
                 <img
                   src={movie.poster ? movie.poster : noImage}
                   className="h-96 rounded shadow-2xl w-72 group-hover:fill-gray-600 group-hover:opacity-50 hover:fill"
